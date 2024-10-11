@@ -1,6 +1,6 @@
 #pragma once
 
-import pmaker.types.color;
+import types.color;
 
 namespace auto xsd {
     // Yes, there is no option for a french knot.

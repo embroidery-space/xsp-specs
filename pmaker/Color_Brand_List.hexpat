@@ -2,7 +2,7 @@
 
 import type.types.rust;
 
-import pmaker.types.cstr;
+import types.cstr;
 
 usize VENDOR_NAME_LENGTH = 259 + 1;
 usize GROUP_NAME_LENGTH = 259 + 1;
@@ -10,10 +10,10 @@ usize BRAND_NAME_LENGTH = 39 + 1;
 usize BRAND_SHORT_NAME_LENGTH = 11 + 1;
 
 struct Brand {
-    pmaker::xsd::SizedCStr<VENDOR_NAME_LENGTH> vendor;
-    pmaker::xsd::SizedCStr<GROUP_NAME_LENGTH> group;
-    pmaker::xsd::SizedCStr<BRAND_NAME_LENGTH> brand;
-    pmaker::xsd::SizedCStr<BRAND_SHORT_NAME_LENGTH> short_name;
+    pmaker::SizedCStr<VENDOR_NAME_LENGTH> vendor;
+    pmaker::SizedCStr<GROUP_NAME_LENGTH> group;
+    pmaker::SizedCStr<BRAND_NAME_LENGTH> brand;
+    pmaker::SizedCStr<BRAND_SHORT_NAME_LENGTH> short_name;
     u16 id;
 };
 

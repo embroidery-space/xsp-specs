@@ -2,8 +2,8 @@
 
 import type.types.rust;
 
-import pmaker.types.cstr;
-import pmaker.types.color;
+import types.cstr;
+import types.color;
 
 namespace auto xsd {
     usize FABRIC_COLOR_NAME_LENGTH = 40 + 1;

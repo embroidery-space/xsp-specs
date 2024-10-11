@@ -3,18 +3,18 @@
 
 import std.io;
 
-import pmaker.xsd.pattern_properties;
-import pmaker.xsd.palette;
-import pmaker.xsd.formats;
-import pmaker.xsd.symbols;
-import pmaker.xsd.pattern_settings;
-import pmaker.xsd.grid;
-import pmaker.xsd.fabric;
-import pmaker.xsd.pattern_info;
-import pmaker.xsd.page_setup;
-import pmaker.xsd.stitch_settings;
-import pmaker.xsd.library;
-import pmaker.xsd.machine_export;
+import xsd.pattern_properties;
+import xsd.palette;
+import xsd.formats;
+import xsd.symbols;
+import xsd.pattern_settings;
+import xsd.grid;
+import xsd.fabric;
+import xsd.pattern_info;
+import xsd.page_setup;
+import xsd.stitch_settings;
+import xsd.library;
+import xsd.machine_export;
 
 struct Pattern {
     xsd::PatternProperties properties;

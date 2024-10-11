@@ -2,7 +2,7 @@
 
 import type.types.rust;
 
-import pmaker.types.cstr;
+import types.cstr;
 
 namespace auto xsd {
     usize FILE_PATH_LENGTH = 259 + 1;

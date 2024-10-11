@@ -2,7 +2,7 @@
 
 import type.types.rust;
 
-import pmaker.types.cstr;
+import types.cstr;
 
 namespace auto xsd {
     usize PATTERN_NAME_LENGTH = 40 + 1;

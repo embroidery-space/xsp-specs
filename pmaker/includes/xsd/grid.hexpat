@@ -2,7 +2,7 @@
 
 import std.io;
 
-import pmaker.types.color;
+import types.color;
 
 namespace auto xsd {
     struct GridLineStyle {

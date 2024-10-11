@@ -2,7 +2,7 @@
 
 import type.types.rust;
 
-import pmaker.types.cstr;
+import types.cstr;
 
 namespace auto xsd {
     usize CELLS_NUMBER = 100;

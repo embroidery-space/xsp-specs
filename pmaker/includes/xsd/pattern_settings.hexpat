@@ -2,7 +2,7 @@
 
 import type.types.rust;
 
-import pmaker.types.cstr;
+import types.cstr;
 
 namespace auto xsd {
     usize PAGE_HEADER_AND_FOOTER_LENGTH = 119 + 1;

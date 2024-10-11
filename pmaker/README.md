@@ -9,4 +9,5 @@ We are learning more about this format through reverse engineering.
 Open a pull request on GitHub or contact the author via [email](mailto:nazarantoniuk18@gmail.com).
 
 > [!IMPORTANT]
-> To run the `xsd.hexpat`, you must create a symlink in the ImHex's `includes` folder titled `pmaker` or copy-paste the content from `pmaker/includes/` there.
+> To run the `.hexpat`, open a file you want to view in ImHex, import a hex pattern and save the project as `.hexproj` in the `pmaker/` folder under this repository.
+> Then you could run hex pattern without any errors.

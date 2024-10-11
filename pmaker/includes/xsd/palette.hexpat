@@ -5,8 +5,8 @@ import std.string;
 import type.types.rust;
 
 import xsd.utils;
-import pmaker.types.cstr;
-import pmaker.types.color;
+import types.cstr;
+import types.color;
 
 namespace auto xsd {
     usize COLOR_NUMBER_LENGTH = 10 + 1;

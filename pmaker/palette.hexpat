@@ -13,4 +13,4 @@ fn palette_offset() {
 };
 
 u16 size @ 0x04 [[hidden]];
-pmaker::xsd::PaletteItem palette[size] @ palette_offset();
+xsd::PaletteItem palette[size] @ palette_offset();
