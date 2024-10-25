@@ -24,8 +24,8 @@ namespace auto xsd {
         pmaker::SizedCStr<FONT_NAME_LENGTH> text_font;
         u16 font_size;
         u16 font_weight;
-        bool italic;
-        padding[11];
+        u16 italic [[format("xsd::format::boolean")]];
+        padding[10];
 
         u16 view [[format("xsd::format::view")]];
         u16 zoom  [[format("xsd::format::zoom")]];
