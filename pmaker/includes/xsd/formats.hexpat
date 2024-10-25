@@ -36,7 +36,7 @@ namespace auto xsd {
         bool italic;
         padding[11];
         u16 full_half_french_size [[format("xsd::format::percentage")]];
-        u16 quarter_petite_size [[format("xsd::format::percentage")]];;
+        u16 quarter_petite_size [[format("xsd::format::percentage")]];
     };
 
     struct Formats<auto palette_size> {
