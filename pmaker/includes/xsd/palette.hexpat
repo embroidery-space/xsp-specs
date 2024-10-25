@@ -36,8 +36,8 @@ namespace auto xsd {
 
         u32 is_bead [[hidden]];
         if (is_bead == 1) {
-            u16 bead_length [[format("xsd::format::millimetres")]];
             u16 bead_diameter [[format("xsd::format::millimetres")]];
+            u16 bead_length [[format("xsd::format::millimetres")]];
         } else { padding[4]; }
 
         padding[2];
