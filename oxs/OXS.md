@@ -188,8 +188,13 @@ As in the case of full stitches, only actual stitches should be recorded.
 | `palindex2` | integer | Colour on the right |
 | `direction` | integer |                     |
 
-When direction 1, the result is `\` (backward).
-When direction 2, the result is `/` (forward).
+When the direction 1, the result is bottom-left for the `palindex1` and top-right for the `palindex2`.
+When the direction 2, the result is top-left for the `palindex1` and bottom-right for the `palindex2`.
+In both cases, the stitch is always in the forward direction.
+
+When the direction 3, the result is `/` (forward).
+When the direction 4, the result is `\` (backward).
+In these cases, the stitch is considered to be the Gobelin stitch.
 
 ```xml
 <partstitch x="10" y="30" palindex1="7" palindex2="0" direction="2" />
