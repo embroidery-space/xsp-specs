@@ -1,6 +1,6 @@
 # Open Cross-Stitch
 
-The Open Cross-Stitch file format uses XML to record the data.
+The Open Cross-Stitch file format uses XML to store the data.
 
 ## `chart`
 
@@ -13,20 +13,11 @@ The file itself begins with an encompassing element called `chart`.
 </chart>
 ```
 
-Within a chart, there are several sections:
+> [!IMPORTANT]
+> This is the only element required to parse the pattern.
+> Following the specification further, you should consider all other elements and their attributes optional (i.e., they can be omitted or empty).
 
-| Section Name                    | Required |
-| ------------------------------- | -------- |
-| `format`                        | No       |
-| `properties`                    | Yes      |
-| `palette`                       | No       |
-| `fullstitches`                  | Yes      |
-| `partstitches`                  | No       |
-| `backstitches`                  | Yes      |
-| `ornaments_inc_knots_and_beads` | No       |
-| `commentboxes`                  | No       |
-
-> `properties`, `fullstitches`, and `backstitches` elements should be considered mandatory, even if they are empty.
+Below is a description of typical sections and their elements that are common in patterns.
 
 ### `format`
 
@@ -50,24 +41,27 @@ The first section is purely informational - just a brief format description.
 />
 ```
 
-### `properties` (occurs once)
+### `properties`
 
-Defines general pattern properties (all are optional).
+Defines general pattern properties.
 
-| Property            | Type    |
-| ------------------- | ------- |
-| `oxsversion`        | string  |
-| `software`          | string  |
-| `software_version`  | string  |
-| `chartheight`       | integer |
-| `chartwidth`        | integer |
-| `charttitle`        | string  |
-| `author`            | string  |
-| `copyright`         | string  |
-| `instructions`      | string  |
-| `stitchesperinch`   | number  |
-| `stitchesperinch_y` | number  |
-| `palettecount`      | integer |
+> All of these properties are optional.
+> However, we recommend that you specify at least `oxsversion` for consistency, and `chartwidth` and `chartheight` for correct display.
+
+| Property            | Type    | Notes                                                                                                                                     |
+| ------------------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| `oxsversion`        | string  | The version of the OXS specification                                                                                                      |
+| `software`          | string  | Specifies the software used to write the pattern file. This can be used to indicate app-specific elements and attributes.                 |
+| `software_version`  | string  | Specifies the software version used to write the pattern file. This can be used to indicate app/version-specific elements and attributes. |
+| `chartheight`       | integer |                                                                                                                                           |
+| `chartwidth`        | integer |                                                                                                                                           |
+| `charttitle`        | string  |                                                                                                                                           |
+| `author`            | string  |                                                                                                                                           |
+| `copyright`         | string  |                                                                                                                                           |
+| `instructions`      | string  |                                                                                                                                           |
+| `stitchesperinch`   | number  |                                                                                                                                           |
+| `stitchesperinch_y` | number  |                                                                                                                                           |
+| `palettecount`      | integer | The number of palette colors other than the cloth/fabric.                                                                                 |
 
 ```xml
 <properties
@@ -83,40 +77,119 @@ Defines general pattern properties (all are optional).
   stitchesperinch="14"
   stitchesperinch_y="14"
   palettecount="7"
-  custom-property1="value1"
-  custom-property2="value2"
 />
 ```
 
 ### `palette` (occurs once)
 
-This element holds n `palette_item` entries, one per colour in the palette.
-The `palette_item` entry with index 0 always defines the cloth colour.
+Holds `palette_item` elements.
 
-The `properties.palettecount` value may be useless because the `palette_item` elements could be counted.
-If you use the `properties.palettecount` value, note the real count of `palette_item` elements is `properties.palettecount - 1`.
+The `palette_item` element with index `0` (usually, the first element in the palette) always defines the cloth color.
 
-#### `palette_item` (occurs `properties.palettecount` times as children `palette`)
+#### `palette_item`
 
-This element defines information about colour in the palette and may represent a thread, bead, or other colour item.
+Defines color information in the palette and can represent a thread, bead, or other color element.
 
-| Property      | Type              |
-| ------------- | ----------------- |
-| `index`       | integer           |
-| `number`      | string            |
-| `name`        | string            |
-| `color`       | hex string        |
-| `printcolor`  | hex string or nil |
-| `blendcolor`  | hex string or nil |
-| `comments`    | string            |
-| `strands`     | integer           |
-| `symbol`      | string or integer |
-| `dashpattern` | string or integer |
-| `bsstrands`   | integer           |
-| `bscolor`     | hex string or nil |
+<table>
+  <thead>
+    <tr>
+      <th>Property</th>
+      <th>Type</th>
+      <th>Software</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>index</code></td>
+      <td>integer</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>number</code></td>
+      <td>string</td>
+      <td></td>
+      <td>
+        <p>Specifies both the color brand and the color number (for example, <code>DMC 310</code>).</p>
+        <p>In Ursa, they are separated by four spaces. In other programs, they can be separated by a single space.</p>
+        <p>In any case, the last part of the string should be considered the number (we expect the number to be a solid string), and everything before it should be considered the brand.</p>
+      </td>
+    </tr>
+    <tr>
+      <td><code>name</code></td>
+      <td>string</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>color</code></td>
+      <td>hex string</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>printcolor</code></td>
+      <td>hex string or <code>nil</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>blendcolor</code></td>
+      <td>hex string or <code>nil</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>comments</code></td>
+      <td>string</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>strands</code></td>
+      <td>integer</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>symbol</code></td>
+      <td>integer or string</td>
+      <td></td>
+      <td>
+        <p>Specifies the symbol used to graphically represent the color.</p>
+        <p>It can be a decimal number representing a UTF-8 <a href="https://developer.mozilla.org/en-US/docs/Glossary/Code_point">code point</a> or a string representing the actual character.</p>
+      </td>
+    </tr>
+    <tr>
+      <td><code>symbol_courier</code></td>
+      <td>string</td>
+      <td>MiniStitch by UrsaSoftware</td>
+      <td>Specifies the actual symbol character (for example, <code>A</code>).</td>
+    </tr>
+    <tr>
+      <td><code>bsstrands</code></td>
+      <td>integer</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>bscolor</code></td>
+      <td>hex string or <code>nil</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>fontname</code></td>
+      <td>string</td>
+      <td>XSPro by DP Software</td>
+      <td>Specifies the font family (for example, <code>Cross Stitch Pro Platinum</code>) used to draw symbols of this color.</td>
+    </tr>
+  </tbody>
+</table>
 
 ```xml
-<!-- The element with index 0 defines the cloth colour. -->
+<!-- The element with index 0 defines the cloth color. -->
 <palette_item
   index="0"
   number="cloth"
@@ -130,15 +203,15 @@ This element defines information about colour in the palette and may represent a
   dashpattern=""
   bsstrands="2"
   bscolor="FFFFFF"
-  custom-property="value"
 />
 
+<!-- Other elements define the material colors. -->
 <palette_item
   index="1"
   number="DMC    310"
   name="Black"
   color="2C3225"
-  printcolor="FFFFFF"
+  printcolor="000000"
   blendcolor="nil"
   comments=""
   strands="2"
@@ -146,39 +219,45 @@ This element defines information about colour in the palette and may represent a
   dashpattern=""
   bsstrands="1"
   bscolor="2C3225"
-  custom-property="value"
 />
 ```
 
-### `fullstitches` (occurs once)
+### `fullstitches`
 
-This element holds n `stitch` entries.
+Holds `stitch` elements.
 
-#### `stitch` (occurs n times as children of `fullstitches`)
+#### `stitch`
 
-Only actual stitches should be recorded.
-There is no need to store empty stitches.
-If you do so anyway, the bare cloth is `palette_item` with the index 0.
+Defines full stitch information.
+
+> Only actual stitches should be stored.
+> There is no need to store empty stitches.
 
 | Property   | Type    |
 | ---------- | ------- |
 | `x`        | integer |
 | `y`        | integer |
 | `palindex` | integer |
+| `marked`   | boolean |
 
 ```xml
-<stitch x="1" y="47" palindex="3" />
-<stitch x="1" y="48" palindex="3" />
+<!-- This stitch is "empty" because it uses the cloth color. -->
+<stitch x="1" y="47" palindex="0" />
+
+<stitch x="1" y="47" palindex="1" />
+<stitch x="1" y="48" palindex="2" />
 <stitch x="1" y="49" palindex="3" marked="true" />
 ```
 
-### `partstitches` (occurs once)
+### `partstitches`
 
-This element holds n `partstitch` entries.
+Holds `partstitch` elements.
 
-#### `partstitch` (occurs n times as children of `partstitches`)
+#### `partstitch`
 
-As in the case of full stitches, only actual stitches should be recorded.
+Defines part stitch information.
+
+> As in the case of full stitches, only actual stitches should be stored.
 
 | Property    | Type    | Note                |
 | ----------- | ------- | ------------------- |
