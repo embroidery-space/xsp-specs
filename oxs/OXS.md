@@ -48,23 +48,27 @@ The first section is optional and is purely informational - just a brief format 
 This section is optional and defines general pattern properties.
 It is recommended to keep this section at the top of the file, as it can be used as a reference for parsing the pattern file.
 
-| Property            | Type    | Notes                                                                                                                                     |
-| ------------------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| `oxsversion`        | string  | The version of the OXS specification                                                                                                      |
-| `software`          | string  | Specifies the software used to write the pattern file. This can be used to indicate app-specific elements and attributes.                 |
-| `software_version`  | string  | Specifies the software version used to write the pattern file. This can be used to indicate app/version-specific elements and attributes. |
-| `chartheight`       | integer |                                                                                                                                           |
-| `chartwidth`        | integer |                                                                                                                                           |
-| `charttitle`        | string  |                                                                                                                                           |
-| `author`            | string  |                                                                                                                                           |
-| `copyright`         | string  |                                                                                                                                           |
-| `instructions`      | string  |                                                                                                                                           |
-| `stitchesperinch`   | number  |                                                                                                                                           |
-| `stitchesperinch_y` | number  |                                                                                                                                           |
-| `palettecount`      | integer | The number of palette colors other than the cloth/fabric.                                                                                 |
+- `oxsversion`: string - The version of the OXS specification
+- `software`: string - Specifies the software used to write the pattern file.
+  Can be used to indicate app-specific elements and attributes.
+- `software_version`: string - Specifies the software version used to write the pattern file.
+  Can be used to indicate app/version-specific elements and attributes.
+- `chartheight`: integer
+- `chartwidth`: integer
+- `charttitle`: string
+- `author`: string
+- `copyright`: string
+- `instructions`: string
+- `stitchesperinch`: number - Specifies the number of stitches per inch of cloth/fabric.
+- `stitchesperinch_y`: number - Same as `stitchesperinch`, but for vertical axis.
+  Can be used for non-square cloth/fabric.
+  If not specified, the value from `stitchesperinch` should be used.
+- `palettecount`: integer - The number of palette colors other than cloth/fabric.
 
-All of these properties are optional.
+All of these attributes are optional.
 However, we recommend that you specify at least `oxsversion` for consistency, and `chartwidth` and `chartheight` for correct display.
+
+If some of the attributes are not specified but are required by a particular software, they should be replaced by the default value of that software.
 
 ```xml
 <properties
