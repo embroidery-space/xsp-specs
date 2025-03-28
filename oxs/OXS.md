@@ -57,9 +57,9 @@ It is recommended to keep this section at the top of the file, as it can be used
 - `chartheight`: integer - Defaults to `100`.
 - `chartwidth`: integer - Defaults to `100`.
 - `charttitle`: string - Defaults to the name of the file.
-- `author`: string
-- `copyright`: string
-- `instructions`: string
+- `author`: string.
+- `copyright`: string.
+- `instructions`: string.
 - `stitchesperinch`: number - Specifies the number of stitches per inch of cloth/fabric.
 - `stitchesperinch_y`: number - Same as `stitchesperinch`, but for vertical axis.
   Can be used for non-square cloth/fabric.
@@ -106,7 +106,7 @@ Note that the size of the palette is not restricted and can contain any number o
 
 Defines color information in the palette and can represent a thread, bead, or any other material color.
 
-- `index`: integer
+- `index`: integer.
 - `number`: string - Specifies both the color brand and the color number (for example, `DMC 310`).
 
   In Ursa, they are separated by four spaces.
@@ -114,17 +114,17 @@ Defines color information in the palette and can represent a thread, bead, or an
 
   In any case, the last part of the string splitted by a space should be considered the number (we expect the number to be a solid string), and everything before it should be considered the brand.
 
-- `name`: string
+- `name`: string.
 - `color`: hex string - Defaults to `FFFFFF` (white) for cloth/fabric and `FF00FF` (magenta) for materials.
-- `printcolor`: hex string or `nil`
-- `blendcolor`: hex string or `nil`
-- `comments`: string
-- `strands`: integer
+- `printcolor`: hex string or `nil`.
+- `blendcolor`: hex string or `nil`.
+- `comments`: string.
+- `strands`: integer.
 - `symbol`: integer or string - Specifies the symbol used to graphically represent the color.
   It can be a decimal number representing a UTF-8 [code point](https://developer.mozilla.org/en-US/docs/Glossary/Code_point) or a string representing the actual character.
 - `symbol_courier` _by MiniStitch (UrsaSoftware_): string - Specifies the actual symbol character (for example, `A`).
-- `bsstrands`: integer
-- `bscolor`: hex string or `nil`
+- `bsstrands`: integer.
+- `bscolor`: hex string or `nil`.
 - `fontname` _by XSPro Platinum (DP Software)_: string - Specifies the font family (for example, `Cross Stitch Pro Platinum`) used to draw symbols of this color.
 
 All of these attributes except `color` are optional.
