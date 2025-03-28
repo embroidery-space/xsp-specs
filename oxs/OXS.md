@@ -56,7 +56,7 @@ It is recommended to keep this section at the top of the file, as it can be used
   Can be used to indicate app/version-specific elements and attributes.
 - `chartheight`: integer - Defaults to `100`.
 - `chartwidth`: integer - Defaults to `100`.
-- `charttitle`: string
+- `charttitle`: string - Defaults to the name of the file.
 - `author`: string
 - `copyright`: string
 - `instructions`: string
