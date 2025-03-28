@@ -90,15 +90,12 @@ If some of the attributes are not specified but are required by a particular sof
 
 ### `palette`
 
-This section is optional and holds `palette_item` elements.
+Holds `palette_item` elements.
 
-The `palette_item` element with index `0` (usually, the first one in the palette) always defines the cloth/fabric color.
-If the `index` attribute is not specified, the first `palette_item` in the palette is assumed to define the cloth/fabric color.
+If the `palette` tag is missing or empty, than we consider the palette to be empty.
 
 During parsing, you can use `properties.palettecount`, if specified, to properly handle the `palette`.
 However, the only source of truth about a palette is the `palette` itself.
-
-If the `palette` tag is missing or empty, than we consider the palette to be empty.
 
 Note that the size of the palette is not restricted and can contain any number of `palette_item`s.
 
@@ -129,6 +126,9 @@ Defines color information in the palette and can represent a thread, bead, or an
 
 All of these attributes except `color` are optional.
 If the `color` attribute is missing, the application should replace it with the default color (see notes above) and notify the user about it so that they can fix the issue later.
+
+The `palette_item` element with index `0` (usually, the first one) always defines the cloth/fabric color.
+If the `index` attribute is not specified, the first `palette_item` in the palette is assumed to define the cloth/fabric color.
 
 ```xml
 <!-- The element with index 0 defines the cloth/fabric color. -->
