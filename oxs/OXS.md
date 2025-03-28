@@ -48,13 +48,14 @@ The first section is optional and is purely informational - just a brief format 
 This section is optional and defines general pattern properties.
 It is recommended to keep this section at the top of the file, as it can be used as a reference for parsing the pattern file.
 
-- `oxsversion`: string - The version of the OXS specification
+- `oxsversion`: string - The version of the OXS specification.
+  If not specified, we assume that the latest OXS version is used (currently, `1.0`).
 - `software`: string - Specifies the software used to write the pattern file.
   Can be used to indicate app-specific elements and attributes.
 - `software_version`: string - Specifies the software version used to write the pattern file.
   Can be used to indicate app/version-specific elements and attributes.
-- `chartheight`: integer
-- `chartwidth`: integer
+- `chartheight`: integer - Defaults to `100`.
+- `chartwidth`: integer - Defaults to `100`.
 - `charttitle`: string
 - `author`: string
 - `copyright`: string
@@ -87,116 +88,50 @@ If some of the attributes are not specified but are required by a particular sof
 />
 ```
 
-### `palette` (occurs once)
+### `palette`
 
-Holds `palette_item` elements.
+This section is optional and holds `palette_item` elements.
 
-The `palette_item` element with index `0` (usually, the first element in the palette) always defines the cloth color.
+The `palette_item` element with index `0` (usually, the first one in the palette) always defines the cloth/fabric color.
+If the `index` attribute is not specified, the first `palette_item` in the palette is assumed to define the cloth/fabric color.
+
+During parsing, you can use `properties.palettecount`, if specified, to properly handle the `palette`.
+However, the only source of truth about a palette is the `palette` itself.
+
+If the `palette` tag is missing or empty, than we consider the palette to be empty.
+
+Note that the size of the palette is not restricted and can contain any number of `palette_item`s.
 
 #### `palette_item`
 
-Defines color information in the palette and can represent a thread, bead, or other color element.
+Defines color information in the palette and can represent a thread, bead, or any other material color.
 
-<table>
-  <thead>
-    <tr>
-      <th>Property</th>
-      <th>Type</th>
-      <th>Software</th>
-      <th>Notes</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>index</code></td>
-      <td>integer</td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td><code>number</code></td>
-      <td>string</td>
-      <td></td>
-      <td>
-        <p>Specifies both the color brand and the color number (for example, <code>DMC 310</code>).</p>
-        <p>In Ursa, they are separated by four spaces. In other programs, they can be separated by a single space.</p>
-        <p>In any case, the last part of the string should be considered the number (we expect the number to be a solid string), and everything before it should be considered the brand.</p>
-      </td>
-    </tr>
-    <tr>
-      <td><code>name</code></td>
-      <td>string</td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td><code>color</code></td>
-      <td>hex string</td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td><code>printcolor</code></td>
-      <td>hex string or <code>nil</code></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td><code>blendcolor</code></td>
-      <td>hex string or <code>nil</code></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td><code>comments</code></td>
-      <td>string</td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td><code>strands</code></td>
-      <td>integer</td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td><code>symbol</code></td>
-      <td>integer or string</td>
-      <td></td>
-      <td>
-        <p>Specifies the symbol used to graphically represent the color.</p>
-        <p>It can be a decimal number representing a UTF-8 <a href="https://developer.mozilla.org/en-US/docs/Glossary/Code_point">code point</a> or a string representing the actual character.</p>
-      </td>
-    </tr>
-    <tr>
-      <td><code>symbol_courier</code></td>
-      <td>string</td>
-      <td>MiniStitch by UrsaSoftware</td>
-      <td>Specifies the actual symbol character (for example, <code>A</code>).</td>
-    </tr>
-    <tr>
-      <td><code>bsstrands</code></td>
-      <td>integer</td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td><code>bscolor</code></td>
-      <td>hex string or <code>nil</code></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td><code>fontname</code></td>
-      <td>string</td>
-      <td>XSPro by DP Software</td>
-      <td>Specifies the font family (for example, <code>Cross Stitch Pro Platinum</code>) used to draw symbols of this color.</td>
-    </tr>
-  </tbody>
-</table>
+- `index`: integer
+- `number`: string - Specifies both the color brand and the color number (for example, `DMC 310`).
+
+  In Ursa, they are separated by four spaces.
+  In other programs, they can be separated by a single space.
+
+  In any case, the last part of the string splitted by a space should be considered the number (we expect the number to be a solid string), and everything before it should be considered the brand.
+
+- `name`: string
+- `color`: hex string - Defaults to `FFFFFF` (white) for cloth/fabric and `FF00FF` (magenta) for materials.
+- `printcolor`: hex string or `nil`
+- `blendcolor`: hex string or `nil`
+- `comments`: string
+- `strands`: integer
+- `symbol`: integer or string - Specifies the symbol used to graphically represent the color.
+  It can be a decimal number representing a UTF-8 [code point](https://developer.mozilla.org/en-US/docs/Glossary/Code_point) or a string representing the actual character.
+- `symbol_courier` _by MiniStitch (UrsaSoftware_): string - Specifies the actual symbol character (for example, `A`).
+- `bsstrands`: integer
+- `bscolor`: hex string or `nil`
+- `fontname` _by XSPro Platinum (DP Software)_: string - Specifies the font family (for example, `Cross Stitch Pro Platinum`) used to draw symbols of this color.
+
+All of these attributes except `color` are optional.
+If the `color` attribute is missing, the application should replace it with the default color (see notes above) and notify the user about it so that they can fix the issue later.
 
 ```xml
-<!-- The element with index 0 defines the cloth color. -->
+<!-- The element with index 0 defines the cloth/fabric color. -->
 <palette_item
   index="0"
   number="cloth"
@@ -207,7 +142,6 @@ Defines color information in the palette and can represent a thread, bead, or ot
   comments=""
   strands="2"
   symbol="100"
-  dashpattern=""
   bsstrands="2"
   bscolor="FFFFFF"
 />
@@ -223,7 +157,6 @@ Defines color information in the palette and can represent a thread, bead, or ot
   comments=""
   strands="2"
   symbol="100"
-  dashpattern=""
   bsstrands="1"
   bscolor="2C3225"
 />
