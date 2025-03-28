@@ -13,15 +13,17 @@ The file itself begins with an encompassing element called `chart`.
 </chart>
 ```
 
-> [!IMPORTANT]
-> This is the only element required to parse the pattern.
-> Following the specification further, you should consider all other elements and their attributes optional (i.e., they can be omitted or empty).
+This is the only element required for parsing the pattern.
+If the file does not contain the `chart` tag, an error should be returned.
+
+It is also recommended to check that the file contains a closing `chart` tag.
+That is, we expect the parsing of the pattern to be completed at the closing `chart` tag, not at EOF.
 
 Below is a description of typical sections and their elements that are common in patterns.
 
 ### `format`
 
-The first section is purely informational - just a brief format description.
+The first section is optional and is purely informational - just a brief format description.
 
 ```xml
 <format
@@ -43,10 +45,8 @@ The first section is purely informational - just a brief format description.
 
 ### `properties`
 
-Defines general pattern properties.
-
-> All of these properties are optional.
-> However, we recommend that you specify at least `oxsversion` for consistency, and `chartwidth` and `chartheight` for correct display.
+This section is optional and defines general pattern properties.
+It is recommended to keep this section at the top of the file, as it can be used as a reference for parsing the pattern file.
 
 | Property            | Type    | Notes                                                                                                                                     |
 | ------------------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
@@ -62,6 +62,9 @@ Defines general pattern properties.
 | `stitchesperinch`   | number  |                                                                                                                                           |
 | `stitchesperinch_y` | number  |                                                                                                                                           |
 | `palettecount`      | integer | The number of palette colors other than the cloth/fabric.                                                                                 |
+
+All of these properties are optional.
+However, we recommend that you specify at least `oxsversion` for consistency, and `chartwidth` and `chartheight` for correct display.
 
 ```xml
 <properties
