@@ -92,7 +92,7 @@ If some of the attributes are not specified but are required by a particular sof
 
 Holds `palette_item` elements.
 
-If the `palette` tag is missing or empty, than we consider the palette to be empty.
+If the `palette` tag is missing or empty, this means that the palette is empty.
 
 During parsing, you can use `properties.palettecount`, if specified, to properly handle the `palette`.
 However, the only source of truth about a palette is the `palette` itself.
@@ -162,31 +162,50 @@ If the `index` attribute is not specified, the first `palette_item` in the palet
 />
 ```
 
+### General Processing of Stitches
+
+Before we start describing stitch sections, it is worth defining how we handle all stitch objects in general.
+The following rules apply to all stitch objects.
+
+In general, all stitch objects have coordinates (`x` and `y`) and an index of the palette item (`palindex`).
+Some stitch objects can have multiple instances of these properties (for example, `x1` and `x2` or `palindex1` and `palindex2`).
+
+We consider a stitch to be "invalid" and do not process, store or display it in such cases:
+
+1. If any stitch coordinate is missing or invalid (i.e., it cannot be converted from a string type to a numeric type).
+
+   However, coordinates that are outside the pattern are considered correct.
+   For example, if the size of the pattern is not specified in the `properties` section, some stitches may appear outside the pattern.
+   We need to process and store such stitches and let the user process them (for example, increase the size of the pattern or remove extra stitches).
+
+2. If the `palindex` attribute is set to `0` (i.e., the stitch refers to a cloth/fabric color).
+
+   Obviously, you should not store such stitches in the pattern file.
+
+3. If the stitch refers to a non-existent palette item.
+
 ### `fullstitches`
 
 Holds `stitch` elements.
+
+If the `fullstitches` tag is missing or empty, this means that the pattern does not contain stitches.
 
 #### `stitch`
 
 Defines full stitch information.
 
-> Only actual stitches should be stored.
-> There is no need to store empty stitches.
-
-| Property   | Type    |
-| ---------- | ------- |
-| `x`        | integer |
-| `y`        | integer |
-| `palindex` | integer |
-| `marked`   | boolean |
+- `x`: integer.
+- `y`: integer.
+- `palindex`: integer.
 
 ```xml
-<!-- This stitch is "empty" because it uses the cloth color. -->
-<stitch x="1" y="47" palindex="0" />
+<!-- This stitch is "empty" because it uses the cloth/fabric color. -->
+<stitch x="1" y="1" palindex="0" />
 
-<stitch x="1" y="47" palindex="1" />
-<stitch x="1" y="48" palindex="2" />
-<stitch x="1" y="49" palindex="3" marked="true" />
+<!-- These are normal stitches. -->
+<stitch x="2" y="2" palindex="1" />
+<stitch x="3" y="3" palindex="2" />
+<stitch x="4" y="4" palindex="3" />
 ```
 
 ### `partstitches`
