@@ -176,6 +176,8 @@ The following rules apply to all stitch objects.
 In general, all stitch objects have coordinates (`x` and `y`) and an index of the palette item (`palindex`).
 Some stitch objects can have multiple instances of these properties (for example, `x1` and `x2` or `palindex1` and `palindex2`).
 
+Also, some stitch objects may have an `objecttype` attribute that specifies the type of the stitch object.
+
 In addition, each stitch object may have a `marked` attribute that marks the stitch as “marked”.
 This attribute can be used to keep track of the progress of the stitching of a pattern.
 
@@ -192,6 +194,7 @@ We consider a stitch to be "invalid" and do not process, store or display it in 
    Obviously, you should not store such stitches in the pattern file.
 
 3. If the stitch refers to a non-existent palette item.
+4. If the stitch is supposed to have an `objecttype` attribute, but it is missing or empty.
 
 ### `fullstitches`
 
@@ -265,7 +268,7 @@ Defines backstitch information.
 - `y1`: number.
 - `y2`: number.
 - `palindex`: integer.
-- `objecttype`: string - Defines the type of a back stitch.
+- `objecttype`: string - Specifies the type of a back stitch.
 
   The known values are:
 
@@ -294,7 +297,7 @@ The `object` element defines anything that can be added by other software.
 - `x1`: number.
 - `y1`: number.
 - `palindex`: integer.
-- `objecttype`: string - Defines the type of an object.
+- `objecttype`: string - Specifies the type of an object.
 
 ```xml
 <object x1="2" y1="3.5" palindex="1" objecttype="fullcross"/>
