@@ -281,78 +281,26 @@ Defines backstitch information.
 <backstitch x1="27.5" x2="36" y1="11.5" y2="10" palindex="1" objecttype="bugle" sequence="0"/>
 ```
 
-### `ornaments_inc_knots_and_beads` (occurs once)
+### `ornaments_inc_knots_and_beads`
 
-This element holds n `object` entries.
+Holds `object` elements.
 
-#### `object` (occurs n times as children of `ornaments_inc_knots_and_beads`)
+If the `ornaments_inc_knots_and_beads` tag is missing or empty, this means that the pattern does not contain additional objects.
 
-The `object` entry describes anything that can be added by different software.
+#### `object`
 
-| Property     | Type    |
-| ------------ | ------- |
-| `x1`         | number  |
-| `y1`         | number  |
-| `palindex`   | integer |
-| `objecttype` | string  |
+The `object` element defines anything that can be added by other software.
+
+- `x1`: number.
+- `y1`: number.
+- `palindex`: integer.
+- `objecttype`: string - Defines the type of an object.
 
 ```xml
 <object x1="2" y1="3.5" palindex="1" objecttype="fullcross"/>
 <object x1="5" y1="6.5" palindex="1" objecttype="4x4"/>
 <object x1="8" y1="12" palindex="1" objecttype="minikey"/>
 ```
-
-<details>
-<summary>UrsaSoftware's list of object</summary>
-
-In a file created by Ursa Software's MacStitch or WinStitch applications, the current possible values of "object type" are as follows: all have a location, and the object type determines the size and shape.
-Other software suppliers will have different object types that are not on this list.
-
-- `knot` - a french knot
-- `bead` - a simple bead of about 2.5 mm
-- `quarter` - a quarter stitch
-- `verticalhalf` - a half stitch which is taller than it is wide - half the width of a cross
-- `horizontalhalf` - a half stitch which is wider than it is tall - half the height of a cross
-- `fullcross` - a normal cross stitch, but placed anywhere
-- `3x2` - a cross stitch, but 1.5 times wider than a normal one
-- `2x3` - a cross stitch, but 1.5 times taller than a normal one
-- `3x3”`- a cross stitch, but 1.5 times taller and wider than a normal one
-- `4x4` - a cross stitch, but 2 times taller and wider than a normal one
-- `minikey` - a color blob or symbol plus the thread number
-- `4x2` - a stitch, but 2 times wider than a normal one, used for knitting
-- `6x2` - a stitch, but 3 times wider than a normal one, used for knitting
-- `8x2`- a stitch, but 4 times wider than a normal one, used for knitting
-- `10x2` - a stitch, but 5 times wider than a normal one, used for knitting
-- `12x2` - a stitch, but 6 times wider than a normal one, used for knitting
-- `14x2` - a stitch, but 7 times wider than a normal one, used for knitting
-- `16x2` - a stitch, but 8 times wider than a normal one, used for knitting
-- `bead2mm` - a 2mm bead
-- `bead3mm` - a 3mm bead
-- `bead5mm` - a 5mm bead
-- `bead6mm`
-- `bead8mm`
-- `bead10mm`
-- `bead12mm`
-- `button6mm`
-- `button12mm` - buttons
-- `button8mm`
-- `button10mm`
-- `button20mm`
-- `sequin6mm`
-- `topleftlongtriangle` - a triangle 1 wide, 2 tall, at top left corner
-- `toprightlongtriangle` - a triangle 1 wide, 2 tall, at top right corner
-- `botleftlongtriangle` - a triangle 1 wide, 2 tall, at bottom left corner
-- `botrightlongtriangle` - a triangle 1 wide, 2 tall, at bottom right corner
-- `topleftwidetriangle` - a triangle 2 wide, 1 tall, at top left corner
-- `toprightwidetriangle` - a triangle 2 wide, 1 tall, at top right corner
-- `botleftwidetriangle` - a triangle 2 wide, 1 tall, at bottom left corner
-- `botrightwidetriangle` - a triangle 2 wide, 1 tall, at bottom right corner
-- `queen2x2` - a diamond shape , width 2 normal stitches
-- `queen3x3` - a diamond shape , width 3 normal stitches
-- `queen4x4` - a diamond shape , width 4 normal stitches
-- `queen5x5` - a diamond shape , width 5 normal stitches
-
-</details>
 
 ### `commentboxes` (occurs once)
 
