@@ -304,21 +304,3 @@ The `object` element defines anything that can be added by other software.
 <object x1="5" y1="6.5" palindex="1" objecttype="4x4"/>
 <object x1="8" y1="12" palindex="1" objecttype="minikey"/>
 ```
-
-### `commentboxes` (occurs once)
-
-This element holds n `commentbox` entries.
-
-#### `commentbox` (occurs n times as children of `commentboxes`)
-
-| Property    | Type    |
-| ----------- | ------- |
-| `boxwidth`  | integer |
-| `boxheight` | integer |
-| `boxleft`   | integer |
-| `boxtop`    | integer |
-| `boxwords`  | string  |
-
-```xml
-<commentbox boxheight="2" boxwidth="34" boxleft="18" boxtop="3" boxwords="This is a comment" />
-```
