@@ -197,7 +197,7 @@ We consider a stitch to be "invalid" and do not process, store or display it in 
 
 Holds `stitch` elements.
 
-If the `fullstitches` tag is missing or empty, this means that the pattern does not contain stitches.
+If the `fullstitches` tag is missing or empty, this means that the pattern does not contain full stitches.
 
 #### `stitch`
 
@@ -250,21 +250,30 @@ In these cases, the stitch is considered to be the Gobelin stitch.
 <partstitch x="11" y="43" palindex1="7" palindex2="0" direction="2" />
 ```
 
-### `backstitches` (occurs once)
+### `backstitches`
 
-This element holds n `backstitch` entries.
+Holds `backstitch` elements.
 
-#### `backstitch` (occurs n times as children of `backstitches`)
+If the `backstitches` tag is missing or empty, this means that the pattern does not contain back stitches.
 
-| Property     | Type    |
-| ------------ | ------- |
-| `x1`         | number  |
-| `y1`         | number  |
-| `x2`         | number  |
-| `y2`         | number  |
-| `palindex`   | integer |
-| `objecttype` | string  |
-| `sequence`   | integer |
+#### `backstitch`
+
+Defines backstitch information.
+
+- `x1`: number.
+- `x2`: number.
+- `y1`: number.
+- `y2`: number.
+- `palindex`: integer.
+- `objecttype`: string - Defines the type of a back stitch.
+
+  The known values are:
+
+  - `backstitch` - A regular back stitch.
+  - `straightstitch` _by Embroidery Studio_ - A long back stitch.
+
+    In Embroidery Studio, back stitches can be only one cell long.
+    Straight stitches, in contrast, can be any length.
 
 ```xml
 <backstitch x1="68" x2="68" y1="62" y2="63" palindex="3" objecttype="backstitch" sequence="0" />
