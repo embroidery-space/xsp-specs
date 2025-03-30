@@ -176,6 +176,9 @@ The following rules apply to all stitch objects.
 In general, all stitch objects have coordinates (`x` and `y`) and an index of the palette item (`palindex`).
 Some stitch objects can have multiple instances of these properties (for example, `x1` and `x2` or `palindex1` and `palindex2`).
 
+In addition, each stitch object may have a `marked` attribute that marks the stitch as “marked”.
+This attribute can be used to keep track of the progress of the stitching of a pattern.
+
 We consider a stitch to be "invalid" and do not process, store or display it in such cases:
 
 1. If any stitch coordinate is missing or invalid (i.e., it cannot be converted from a string type to a numeric type).
@@ -203,6 +206,7 @@ Defines full stitch information.
 - `x`: integer.
 - `y`: integer.
 - `palindex`: integer.
+- `marked`: boolean.
 
 ```xml
 <!-- This stitch is "empty" because it uses the cloth/fabric color. -->
@@ -211,7 +215,7 @@ Defines full stitch information.
 <!-- These are normal stitches. -->
 <stitch x="2" y="2" palindex="1" />
 <stitch x="3" y="3" palindex="2" />
-<stitch x="4" y="4" palindex="3" />
+<stitch x="4" y="4" palindex="3" marked="true" />
 ```
 
 ### `partstitches`
