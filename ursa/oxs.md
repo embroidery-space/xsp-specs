@@ -137,35 +137,37 @@ The `palette_item` element with index `0` (usually, the first one) always define
 If the `index` attribute is not specified, the first `palette_item` in the palette is assumed to define the cloth/fabric color.
 
 ```xml
-<!-- The element with index 0 defines the cloth/fabric color. -->
-<palette_item
-  index="0"
-  number="cloth"
-  name="cloth"
-  color="FFFFFF"
-  printcolor="FFFFFF"
-  blendcolor="nil"
-  comments=""
-  strands="2"
-  symbol="100"
-  bsstrands="2"
-  bscolor="FFFFFF"
-/>
+<palette>
+  <!-- The element with index 0 defines the cloth/fabric color. -->
+  <palette_item
+    index="0"
+    number="cloth"
+    name="cloth"
+    color="FFFFFF"
+    printcolor="FFFFFF"
+    blendcolor="nil"
+    comments=""
+    strands="2"
+    symbol="100"
+    bsstrands="2"
+    bscolor="FFFFFF"
+  />
 
-<!-- Other elements define the material colors. -->
-<palette_item
-  index="1"
-  number="DMC    310"
-  name="Black"
-  color="2C3225"
-  printcolor="000000"
-  blendcolor="nil"
-  comments=""
-  strands="2"
-  symbol="100"
-  bsstrands="1"
-  bscolor="2C3225"
-/>
+  <!-- Other elements define the material colors. -->
+  <palette_item
+    index="1"
+    number="DMC    310"
+    name="Black"
+    color="2C3225"
+    printcolor="000000"
+    blendcolor="nil"
+    comments=""
+    strands="2"
+    symbol="100"
+    bsstrands="1"
+    bscolor="2C3225"
+  />
+</palette>
 ```
 
 ### General Processing of Stitches
@@ -212,13 +214,15 @@ Defines full stitch information.
 - `marked`: boolean.
 
 ```xml
-<!-- This stitch is "empty" because it uses the cloth/fabric color. -->
-<stitch x="1" y="1" palindex="0" />
+<fullstitches>
+  <!-- This stitch is "empty" because it uses the cloth/fabric color. -->
+  <stitch x="1" y="1" palindex="0" />
 
-<!-- These are normal stitches. -->
-<stitch x="2" y="2" palindex="1" />
-<stitch x="3" y="3" palindex="2" />
-<stitch x="4" y="4" palindex="3" marked="true" />
+  <!-- These are normal stitches. -->
+  <stitch x="2" y="2" palindex="1" />
+  <stitch x="3" y="3" palindex="2" />
+  <stitch x="4" y="4" palindex="3" marked="true" />
+</fullstitches>
 ```
 
 ### `partstitches`
@@ -248,9 +252,11 @@ When the direction 4, the result is `\` (backward).
 In these cases, the stitch is considered to be the Gobelin stitch.
 
 ```xml
-<partstitch x="10" y="30" palindex1="7" palindex2="0" direction="2" />
-<partstitch x="11" y="43" palindex1="5" palindex2="0" direction="1" />
-<partstitch x="11" y="43" palindex1="7" palindex2="0" direction="2" />
+<partstitches>
+  <partstitch x="10" y="30" palindex1="7" palindex2="0" direction="2" />
+  <partstitch x="11" y="43" palindex1="5" palindex2="0" direction="1" />
+  <partstitch x="11" y="43" palindex1="7" palindex2="0" direction="2" />
+</partstitches>
 ```
 
 ### `backstitches`
@@ -285,19 +291,21 @@ Defines backstitch information.
     Curved stitches have an unspecified number of `x` and `y` coordinates.
 
 ```xml
-<backstitch x1="68" x2="68" y1="62" y2="63" palindex="3" objecttype="backstitch"/>
-<backstitch x1="32" x2="31" y1="7" y2="7" palindex="1" objecttype="daisy"/>
-<backstitch x1="27.5" x2="36" y1="11.5" y2="10" palindex="1" objecttype="bugle"/>
-<backstitch
-  x1="1.00" y1="0.00"
-  x2="0.43" y2="0.26"
-  x3="0.06" y3="0.66"
-  x4="0.06" y4="1.03"
-  x5="0.50" y5="1.06"
-  x6="0.89" y6="0.66"
-  x7="1.10" y7="0.10"
-  palindex="1" objecttype="curvedstitch"
-/>
+<backstitches>
+  <backstitch x1="68" x2="68" y1="62" y2="63" palindex="3" objecttype="backstitch"/>
+  <backstitch x1="32" x2="31" y1="7" y2="7" palindex="1" objecttype="daisy"/>
+  <backstitch x1="27.5" x2="36" y1="11.5" y2="10" palindex="1" objecttype="bugle"/>
+  <backstitch
+    x1="1.00" y1="0.00"
+    x2="0.43" y2="0.26"
+    x3="0.06" y3="0.66"
+    x4="0.06" y4="1.03"
+    x5="0.50" y5="1.06"
+    x6="0.89" y6="0.66"
+    x7="1.10" y7="0.10"
+    palindex="1" objecttype="curvedstitch"
+  />
+</backstitches>
 ```
 
 ### `ornaments_inc_knots_and_beads`
@@ -325,10 +333,12 @@ The `object` element defines anything that can be added by other software.
     Also, special stitches have a `rotation`, `flip_x` and `flip_y` attributes.
 
 ```xml
-<object x1="2" y1="3.5" palindex="1" objecttype="fullcross"/>
-<object x1="5" y1="6.5" palindex="1" objecttype="4x4"/>
-<object x1="8" y1="12" palindex="1" objecttype="minikey"/>
-<object x1="10" y1="5.5" palindex="1" modindex="0" rotation="90" flip_x="true" flip_y="false" objecttype="specialstitch"/>
+<ornaments_inc_knots_and_beads>
+  <object x1="2" y1="3.5" palindex="1" objecttype="fullcross"/>
+  <object x1="5" y1="6.5" palindex="1" objecttype="4x4"/>
+  <object x1="8" y1="12" palindex="1" objecttype="minikey"/>
+  <object x1="10" y1="5.5" palindex="1" modindex="0" rotation="90" flip_x="true" flip_y="false" objecttype="specialstitch"/>
+</ornaments_inc_knots_and_beads>
 ```
 
 ### `special_stitch_models` _by Embroidery Studio_
@@ -351,30 +361,32 @@ The `model` element contains `backstitch` (with object types `backstitch`, `stra
 The `palindex` attribute is not actually used for special stitch models, but is specified to make their elements valid.
 
 ```xml
-<model unique_name="Rhodes Heart - over 6" name="Rhodes Heart" width="3.0" height="2.5">
-  <backstitch x1="1.0" x2="2.0" y1="2.0" y2="0.0" palindex="1" objecttype="straightstitch"/>
-  <backstitch x1="0.5" x2="2.5" y1="1.5" y2="0.0" palindex="1" objecttype="straightstitch"/>
-  <backstitch x1="0.0" x2="3.0" y1="1.0" y2="0.5" palindex="1" objecttype="straightstitch"/>
-  <backstitch x1="0.0" x2="3.0" y1="0.5" y2="1.0" palindex="1" objecttype="straightstitch"/>
-  <backstitch x1="0.5" x2="2.5" y1="0.0" y2="1.5" palindex="1" objecttype="straightstitch"/>
-  <backstitch x1="1.0" x2="2.0" y1="0.0" y2="2.0" palindex="1" objecttype="straightstitch"/>
-  <backstitch x1="1.5" x2="1.5" y1="0.5" y2="2.5" palindex="1" objecttype="straightstitch"/>
-</model>
-<model unique_name="Lazy Daisy" name="Lazy Daisy" width="1.0" height="1.5">
-  <backstitch
-    x1="1.00" y1="0.00"
-    x2="0.43" y2="0.26"
-    x3="0.06" y3="0.66"
-    x4="0.06" y4="1.03"
-    x5="0.50" y5="1.06"
-    x6="0.89" y6="0.66"
-    x7="1.10" y7="0.10"
-    palindex="1" objecttype="curvedstitch"
-  />
-  <backstitch
-    x1="0.03" y1="1.13"
-    x2="0.23" y2="0.93"
-    palindex="1" objecttype="curvedstitch"
-  />
-</model>
+<special_stitch_models>
+  <model unique_name="Rhodes Heart - over 6" name="Rhodes Heart" width="3.0" height="2.5">
+    <backstitch x1="1.0" x2="2.0" y1="2.0" y2="0.0" palindex="1" objecttype="straightstitch"/>
+    <backstitch x1="0.5" x2="2.5" y1="1.5" y2="0.0" palindex="1" objecttype="straightstitch"/>
+    <backstitch x1="0.0" x2="3.0" y1="1.0" y2="0.5" palindex="1" objecttype="straightstitch"/>
+    <backstitch x1="0.0" x2="3.0" y1="0.5" y2="1.0" palindex="1" objecttype="straightstitch"/>
+    <backstitch x1="0.5" x2="2.5" y1="0.0" y2="1.5" palindex="1" objecttype="straightstitch"/>
+    <backstitch x1="1.0" x2="2.0" y1="0.0" y2="2.0" palindex="1" objecttype="straightstitch"/>
+    <backstitch x1="1.5" x2="1.5" y1="0.5" y2="2.5" palindex="1" objecttype="straightstitch"/>
+  </model>
+  <model unique_name="Lazy Daisy" name="Lazy Daisy" width="1.0" height="1.5">
+    <backstitch
+      x1="1.00" y1="0.00"
+      x2="0.43" y2="0.26"
+      x3="0.06" y3="0.66"
+      x4="0.06" y4="1.03"
+      x5="0.50" y5="1.06"
+      x6="0.89" y6="0.66"
+      x7="1.10" y7="0.10"
+      palindex="1" objecttype="curvedstitch"
+    />
+    <backstitch
+      x1="0.03" y1="1.13"
+      x2="0.23" y2="0.93"
+      palindex="1" objecttype="curvedstitch"
+    />
+  </model>
+</special_stitch_models>
 ```
