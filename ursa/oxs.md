@@ -278,10 +278,26 @@ Defines backstitch information.
     In Embroidery Studio, back stitches can be only one cell long.
     Straight stitches, in contrast, can be any length.
 
+  - `curvedstitch` _by Embroidery Studio_ - A curved stitch.
+
+    In Embroidery Studio, curved stitches are part of special stitch models.
+
+    Curved stitches have an unspecified number of `x` and `y` coordinates.
+
 ```xml
-<backstitch x1="68" x2="68" y1="62" y2="63" palindex="3" objecttype="backstitch" sequence="0" />
-<backstitch x1="32" x2="31" y1="7" y2="7" palindex="1" objecttype="daisy" sequence="0"/>
-<backstitch x1="27.5" x2="36" y1="11.5" y2="10" palindex="1" objecttype="bugle" sequence="0"/>
+<backstitch x1="68" x2="68" y1="62" y2="63" palindex="3" objecttype="backstitch"/>
+<backstitch x1="32" x2="31" y1="7" y2="7" palindex="1" objecttype="daisy"/>
+<backstitch x1="27.5" x2="36" y1="11.5" y2="10" palindex="1" objecttype="bugle"/>
+<backstitch
+  x1="1.00" y1="0.00"
+  x2="0.43" y2="0.26"
+  x3="0.06" y3="0.66"
+  x4="0.06" y4="1.03"
+  x5="0.50" y5="1.06"
+  x6="0.89" y6="0.66"
+  x7="1.10" y7="0.10"
+  palindex="1" objecttype="curvedstitch"
+/>
 ```
 
 ### `ornaments_inc_knots_and_beads`
@@ -299,8 +315,66 @@ The `object` element defines anything that can be added by other software.
 - `palindex`: integer.
 - `objecttype`: string - Specifies the type of an object.
 
+  The known values are:
+
+  - `specialstitch` _by Embroidery Studio_ - A special stitch from the XSD pattern.
+
+    Stitch objects of this type have a `modindex` attribute that specifies the special stitch model defined in the `special_stitch_models` section.
+    If this attribute is missing or empty, then we consider this special stitch to be invalid.
+
+    Also, special stitches have a `rotation`, `flip_x` and `flip_y` attributes.
+
 ```xml
 <object x1="2" y1="3.5" palindex="1" objecttype="fullcross"/>
 <object x1="5" y1="6.5" palindex="1" objecttype="4x4"/>
 <object x1="8" y1="12" palindex="1" objecttype="minikey"/>
+<object x1="10" y1="5.5" palindex="1" modindex="0" rotation="90" flip_x="true" flip_y="false" objecttype="specialstitch"/>
+```
+
+### `special_stitch_models` _by Embroidery Studio_
+
+Holds `model` elements.
+
+If the `special_stitch_models` tag is missing or empty, this means that the pattern does not contain special stitch models.
+
+#### `model`
+
+Defines special stitch model information.
+
+- `unique_name`: string.
+- `name`: string.
+- `width`: number.
+- `height`: number.
+
+The `model` element contains `backstitch` (with object types `backstitch`, `straightstitch`, `curvedstitch`) and `object` elements (with object type `knot`).
+
+The `palindex` attribute is not actually used for special stitch models, but is specified to make their elements valid.
+
+```xml
+<model unique_name="Rhodes Heart - over 6" name="Rhodes Heart" width="3.0" height="2.5">
+  <backstitch x1="1.0" x2="2.0" y1="2.0" y2="0.0" palindex="1" objecttype="straightstitch"/>
+  <backstitch x1="0.5" x2="2.5" y1="1.5" y2="0.0" palindex="1" objecttype="straightstitch"/>
+  <backstitch x1="0.0" x2="3.0" y1="1.0" y2="0.5" palindex="1" objecttype="straightstitch"/>
+  <backstitch x1="0.0" x2="3.0" y1="0.5" y2="1.0" palindex="1" objecttype="straightstitch"/>
+  <backstitch x1="0.5" x2="2.5" y1="0.0" y2="1.5" palindex="1" objecttype="straightstitch"/>
+  <backstitch x1="1.0" x2="2.0" y1="0.0" y2="2.0" palindex="1" objecttype="straightstitch"/>
+  <backstitch x1="1.5" x2="1.5" y1="0.5" y2="2.5" palindex="1" objecttype="straightstitch"/>
+</model>
+<model unique_name="Lazy Daisy" name="Lazy Daisy" width="1.0" height="1.5">
+  <backstitch
+    x1="1.00" y1="0.00"
+    x2="0.43" y2="0.26"
+    x3="0.06" y3="0.66"
+    x4="0.06" y4="1.03"
+    x5="0.50" y5="1.06"
+    x6="0.89" y6="0.66"
+    x7="1.10" y7="0.10"
+    palindex="1" objecttype="curvedstitch"
+  />
+  <backstitch
+    x1="0.03" y1="1.13"
+    x2="0.23" y2="0.93"
+    palindex="1" objecttype="curvedstitch"
+  />
+</model>
 ```
