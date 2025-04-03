@@ -233,29 +233,57 @@ Holds `partstitch` elements.
 
 Defines part stitch information.
 
-> As in the case of full stitches, only actual stitches should be stored.
+- `x`: integer.
+- `y`: integer.
+- `palindex1`: integer.
 
-| Property    | Type    | Note                |
-| ----------- | ------- | ------------------- |
-| `x`         | integer |                     |
-| `y`         | integer |                     |
-| `palindex1` | integer | Colour on the left  |
-| `palindex2` | integer | Colour on the right |
-| `direction` | integer |                     |
+  For three-quarter stitches, specifies the color on the left.
 
-When the direction 1, the result is bottom-left for the `palindex1` and top-right for the `palindex2`.
-When the direction 2, the result is top-left for the `palindex1` and bottom-right for the `palindex2`.
-In both cases, the stitch is always in the forward direction.
+  For half/gobelin stitches, specifies the color of the entire stitch.
 
-When the direction 3, the result is `/` (forward).
-When the direction 4, the result is `\` (backward).
-In these cases, the stitch is considered to be the Gobelin stitch.
+- `palindex2`: integer.
+
+  Only applicable for three-quarter stitches.
+  Specifies the color on the right.
+
+- `direction`: integer. Specifies the direction of the part stitch.
+
+  The possible values are:
+
+  - `1` and `2` for three-quarter stitches.
+  - `3` and `4` for half/gobelin stitches.
+
+![Part stitches in WinStitch](/images/ursa/oxs/partstitches.png)
+
+This is a screenshot from WinStitch that shows half/gobeling and three-quarter stitches.
+The left part of the screenshot is in the "blocks" view and the right part is in the "stitches" view.
+
+1. Half/Gobelin stitches:
+
+   - The top one is with `direction=3` (forward).
+   - The bottom on is with `direction=4` (backward).
+
+2. Three-quarter stithces:
+
+   - The top-left one is with `direction=2`, `palindex1` set and `palindex2` not set.
+   - The top-right one is with `direction=1`, `palindex1` not set and `palindex2` set.
+   - The bottom-left one is with `direction=1`, `palindex1` set and `palindex2` not set.
+   - The bottom-right one is with `direction=2`, `palindex1` not set and `palindex2` set.
+
+A single three-quarter stitch can have colors for both sides, so it will fill the entire cell.
+Note that there cannot be more than one `partstitch` object in a cell, although this is not a significant problem.
 
 ```xml
 <partstitches>
-  <partstitch x="10" y="30" palindex1="7" palindex2="0" direction="2" />
-  <partstitch x="11" y="43" palindex1="5" palindex2="0" direction="1" />
-  <partstitch x="11" y="43" palindex1="7" palindex2="0" direction="2" />
+  <!-- These are half/gobelin stitches (group 1 in the screenshot above). -->
+  <partstitch x="1" y="1" palindex1="1" palindex2="0" direction="3"/>
+  <partstitch x="1" y="3" palindex1="1" palindex2="0" direction="4"/>
+
+  <!-- These are three-quarter stitches (group 2 in the screenshot above). -->
+  <partstitch x="3" y="1" palindex1="2" palindex2="0" direction="2"/> <!-- top-left -->
+  <partstitch x="5" y="1" palindex1="0" palindex2="2" direction="1"/> <!-- top-right -->
+  <partstitch x="3" y="3" palindex1="2" palindex2="0" direction="1"/> <!-- bottom-left -->
+  <partstitch x="5" y="3" palindex1="0" palindex2="2" direction="2"/> <!-- bottom-right -->
 </partstitches>
 ```
 
@@ -267,7 +295,7 @@ If the `backstitches` tag is missing or empty, this means that the pattern does 
 
 #### `backstitch`
 
-Defines backstitch information.
+Defines back stitch information.
 
 - `x1`: number.
 - `x2`: number.
