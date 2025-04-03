@@ -8,6 +8,43 @@ This document offers a detailed specification of the OXS format based on the off
 
 You can find a practical OXS parser [here](https://github.com/embroidery-space/embroidery-studio/blob/main/src-tauri/src/core/parsers/oxs.rs).
 
+## Conventions
+
+Here are some specification conventions:
+
+1. All element and property names must be in [snake case](https://en.wikipedia.org/wiki/Snake_case).
+
+Here are common data types used in this specification:
+
+- `string` - Represents a sequence of characters encoded in UTF-8.
+- `integer` - Represents a whole number without a fractional component in base 10.
+
+  Currently, only unsigned integers are expected to be used.
+
+- `number` - Represents a numeric value that can be either an integer or a floating-point number.
+
+  Currently, only unsigned number are expected to be used.
+
+  Stringified floating-point numbers can contain a decimal separator (dot, `.`).
+  Only the period (`.`) is allowed as a decimal separator.
+
+  However, there are some software that use a comma (`,`) as a decimal separator.
+  Therefore, so it is recommended to normalize the string before parsing the value.
+
+  The exponential notation is not expected to be used, but it should be supported.
+
+- `color` - Represents a hexadecimal representation of an RGB color.
+  The color value is specified as a six-character string (`RRGGBB`) without a leading `#`. Each component (`RR`, `GG`, `BB`) is a two-digit hexadecimal number (`00` to `FF`) representing the red, green, and blue color channels, respectively.
+
+  In addition to specific color values, the special value `nil` is allowed, indicating the absence of a color.
+
+- `boolean` - Represents a logical value and can have one of two states: `true` or `false`.
+
+  Only lowercase strings are allowed.
+
+  However, there are some software that use uppercase strings.
+  Therefore, so it is recommended to normalize the string before parsing the value.
+
 ## `chart`
 
 The file itself begins with an encompassing element called `chart`.
@@ -118,16 +155,16 @@ Defines color information in the palette and can represent a thread, bead, or an
   In any case, the last part of the string splitted by a space should be considered the number (we expect the number to be a solid string), and everything before it should be considered the brand.
 
 - `name`: string.
-- `color`: hex string - Defaults to `FFFFFF` (white) for cloth/fabric and `FF00FF` (magenta) for materials.
-- `printcolor`: hex string or `nil`.
-- `blendcolor`: hex string or `nil`.
+- `color`: color - Defaults to `FFFFFF` (white) for cloth/fabric and `FF00FF` (magenta) for materials.
+- `printcolor`: color.
+- `blendcolor`: color.
 - `comments`: string.
 - `strands`: integer.
 - `symbol`: integer or string - Specifies the symbol used to graphically represent the color.
   It can be a decimal number representing a UTF-8 [code point](https://developer.mozilla.org/en-US/docs/Glossary/Code_point) or a string representing the actual character.
 - `symbol_courier` _by MiniStitch (UrsaSoftware_): string - Specifies the actual symbol character (for example, `A`).
 - `bsstrands`: integer.
-- `bscolor`: hex string or `nil`.
+- `bscolor`: color.
 - `fontname` _by XSPro Platinum (DP Software)_: string - Specifies the font family (for example, `Cross Stitch Pro Platinum`) used to draw symbols of this color.
 
 All of these attributes except `color` are optional.
@@ -180,7 +217,7 @@ Some stitch objects can have multiple instances of these properties (for example
 
 Also, some stitch objects may have an `objecttype` attribute that specifies the type of the stitch object.
 
-In addition, each stitch object may have a `marked` attribute that marks the stitch as “marked”.
+In addition, each stitch object may have a `marked` attribute that marks the stitch as "marked" or "completed".
 This attribute can be used to keep track of the progress of the stitching of a pattern.
 
 We consider a stitch to be "invalid" and do not process, store or display it in such cases:
@@ -208,8 +245,8 @@ If the `fullstitches` tag is missing or empty, this means that the pattern does 
 
 Defines full stitch information.
 
-- `x`: integer.
-- `y`: integer.
+- `x`: number.
+- `y`: number.
 - `palindex`: integer.
 - `marked`: boolean.
 
@@ -233,8 +270,8 @@ Holds `partstitch` elements.
 
 Defines part stitch information.
 
-- `x`: integer.
-- `y`: integer.
+- `x`: number.
+- `y`: number.
 - `palindex1`: integer.
 
   For three-quarter stitches, specifies the color on the left.
@@ -252,6 +289,8 @@ Defines part stitch information.
 
   - `1` and `2` for three-quarter stitches.
   - `3` and `4` for half/gobelin stitches.
+
+- `marked`: boolean.
 
 ![Part stitches in WinStitch](/images/ursa/oxs/partstitches.png)
 
@@ -318,6 +357,8 @@ Defines back stitch information.
 
     Curved stitches have an unspecified number of `x` and `y` coordinates.
 
+- `marked`: boolean.
+
 ```xml
 <backstitches>
   <backstitch x1="68" x2="68" y1="62" y2="63" palindex="3" objecttype="backstitch"/>
@@ -359,6 +400,8 @@ The `object` element defines anything that can be added by other software.
     If this attribute is missing or empty, then we consider this special stitch to be invalid.
 
     Also, special stitches have a `rotation`, `flip_x` and `flip_y` attributes.
+
+- `marked`: boolean.
 
 ```xml
 <ornaments_inc_knots_and_beads>
