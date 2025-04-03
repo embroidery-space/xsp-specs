@@ -10,9 +10,11 @@ You can find a practical OXS parser [here](https://github.com/embroidery-space/e
 
 ## Conventions
 
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC 2119](https://datatracker.ietf.org/doc/html/rfc2119).
+
 Here are some specification conventions:
 
-1. All element and property names must be in [snake case](https://en.wikipedia.org/wiki/Snake_case).
+1. All element and property names SHOULD be in [snake case](https://en.wikipedia.org/wiki/Snake_case).
 
 Here are common data types used in this specification:
 
@@ -25,11 +27,11 @@ Here are common data types used in this specification:
 
   Currently, only unsigned number are expected to be used.
 
-  Stringified floating-point numbers can contain a decimal separator (dot, `.`).
+  Stringified floating-point numbers can contain a decimal separator (period, `.`).
   Only the period (`.`) is allowed as a decimal separator.
 
   However, there are some software that use a comma (`,`) as a decimal separator.
-  Therefore, so it is recommended to normalize the string before parsing the value.
+  Therefore, it is RECOMMENDED to normalize the string before parsing the value.
 
   The exponential notation is not expected to be used, but it should be supported.
 
@@ -43,7 +45,7 @@ Here are common data types used in this specification:
   Only lowercase strings are allowed.
 
   However, there are some software that use uppercase strings.
-  Therefore, so it is recommended to normalize the string before parsing the value.
+  Therefore, it is RECOMMENDED to normalize the string before parsing the value.
 
 ## `chart`
 
@@ -56,17 +58,17 @@ The file itself begins with an encompassing element called `chart`.
 </chart>
 ```
 
-This is the only element required for parsing the pattern.
-If the file does not contain the `chart` tag, an error should be returned.
+This is the only element REQUIRED for parsing the pattern.
+If the file does not contain the `chart` tag, an error MUST be returned.
 
-It is also recommended to check that the file contains a closing `chart` tag.
+It is also RECOMMENDED to check that the file contains a closing `chart` tag.
 That is, we expect the parsing of the pattern to be completed at the closing `chart` tag, not at EOF.
 
 Below is a description of typical sections and their elements that are common in patterns.
 
 ### `format`
 
-The first section is optional and is purely informational - just a brief format description.
+The first section is OPTIONAL and is purely informational - just a brief format description.
 
 ```xml
 <format
@@ -88,10 +90,10 @@ The first section is optional and is purely informational - just a brief format 
 
 ### `properties`
 
-This section is optional and defines general pattern properties.
-It is recommended to keep this section at the top of the file, as it can be used as a reference for parsing the pattern file.
+This section is OPTIONAL and defines general pattern properties.
+It is RECOMMENDED to keep this section at the top of the file, as it can be used as a reference for parsing the pattern file.
 
-- `oxsversion`: string - The version of the OXS specification.
+- `oxsversion`: string - The version of the OXS format.
   If not specified, we assume that the latest OXS version is used (currently, `1.0`).
 - `software`: string - Specifies the software used to write the pattern file.
   Can be used to indicate app-specific elements and attributes.
@@ -106,13 +108,13 @@ It is recommended to keep this section at the top of the file, as it can be used
 - `stitchesperinch`: number - Specifies the number of stitches per inch of cloth/fabric.
 - `stitchesperinch_y`: number - Same as `stitchesperinch`, but for vertical axis.
   Can be used for non-square cloth/fabric.
-  If not specified, the value from `stitchesperinch` should be used.
+  If not specified, the value from `stitchesperinch` can be used.
 - `palettecount`: integer - The number of palette colors other than cloth/fabric.
 
-All of these attributes are optional.
-However, we recommend that you specify at least `oxsversion` for consistency, and `chartwidth` and `chartheight` for correct display.
+All of these attributes are OPTIONAL.
+However, it is RECOMMENDED that you specify at least `oxsversion` for consistency, and `chartwidth` and `chartheight` for correct display.
 
-If some of the attributes are not specified but are required by a particular software, they should be replaced by the default value of that software.
+If some of the attributes are not specified but are required by a particular software, they can be replaced by the default value of that software.
 
 ```xml
 <properties
@@ -152,7 +154,7 @@ Defines color information in the palette and can represent a thread, bead, or an
   In Ursa, they are separated by four spaces.
   In other programs, they can be separated by a single space.
 
-  In any case, the last part of the string splitted by a space should be considered the number (we expect the number to be a solid string), and everything before it should be considered the brand.
+  In any case, the last part of the string splitted by a space is the number (we expect the number to be a solid string), and everything before it is the brand.
 
 - `name`: string.
 - `color`: color - Defaults to `FFFFFF` (white) for cloth/fabric and `FF00FF` (magenta) for materials.
@@ -167,8 +169,8 @@ Defines color information in the palette and can represent a thread, bead, or an
 - `bscolor`: color.
 - `fontname` _by XSPro Platinum (DP Software)_: string - Specifies the font family (for example, `Cross Stitch Pro Platinum`) used to draw symbols of this color.
 
-All of these attributes except `color` are optional.
-If the `color` attribute is missing, the application should replace it with the default color (see notes above) and notify the user about it so that they can fix the issue later.
+All of these attributes except `color` are OPTIONAL.
+If the `color` attribute is missing, empty or `nil`, the application SHOULD replace it with the default color (see notes above) and notify the user about it so that they can fix the issue later.
 
 The `palette_item` element with index `0` (usually, the first one) always defines the cloth/fabric color.
 If the `index` attribute is not specified, the first `palette_item` in the palette is assumed to define the cloth/fabric color.
@@ -215,22 +217,22 @@ The following rules apply to all stitch objects.
 In general, all stitch objects have coordinates (`x` and `y`) and an index of the palette item (`palindex`).
 Some stitch objects can have multiple instances of these properties (for example, `x1` and `x2` or `palindex1` and `palindex2`).
 
-Also, some stitch objects may have an `objecttype` attribute that specifies the type of the stitch object.
+Also, some stitch objects have an `objecttype` attribute that specifies the type of the stitch object.
 
-In addition, each stitch object may have a `marked` attribute that marks the stitch as "marked" or "completed".
+In addition, each stitch object MAY have a `marked` attribute that marks the stitch as "marked" or "completed".
 This attribute can be used to keep track of the progress of the stitching of a pattern.
 
-We consider a stitch to be "invalid" and do not process, store or display it in such cases:
+The stitch is considered to be "invalid" and MUST NOT be processed, stored or displayed in such cases:
 
 1. If any stitch coordinate is missing or invalid (i.e., it cannot be converted from a string type to a numeric type).
 
    However, coordinates that are outside the pattern are considered correct.
    For example, if the size of the pattern is not specified in the `properties` section, some stitches may appear outside the pattern.
-   We need to process and store such stitches and let the user process them (for example, increase the size of the pattern or remove extra stitches).
+   We SHOULD process and store such stitches and let the user process them (for example, increase the size of the pattern or remove extra stitches).
 
 2. If the `palindex` attribute is set to `0` (i.e., the stitch refers to a cloth/fabric color).
 
-   Obviously, you should not store such stitches in the pattern file.
+   Obviously, you SHOULD NOT store such stitches in the pattern file.
 
 3. If the stitch refers to a non-existent palette item.
 4. If the stitch is supposed to have an `objecttype` attribute, but it is missing or empty.
@@ -302,12 +304,15 @@ The left part of the screenshot is in the "blocks" view and the right part is in
    - The top one is with `direction=3` (forward).
    - The bottom on is with `direction=4` (backward).
 
-2. Three-quarter stithces:
+2. Three-quarter stitches:
 
    - The top-left one is with `direction=2`, `palindex1` set and `palindex2` not set.
    - The top-right one is with `direction=1`, `palindex1` not set and `palindex2` set.
    - The bottom-left one is with `direction=1`, `palindex1` set and `palindex2` not set.
    - The bottom-right one is with `direction=2`, `palindex1` not set and `palindex2` set.
+
+Three-quarter stitches usually represent a single object (and are therefore drawn using a single stitch tool).
+However, some applications MAY represent them as a combination of a quarter (1/2 of a half/gobelin stitch) or petit (1/4 of a full stitch) stitch and a half/gobelin stitch.
 
 A single three-quarter stitch can have colors for both sides, so it will fill the entire cell.
 Note that there cannot be more than one `partstitch` object in a cell, although this is not a significant problem.
@@ -399,7 +404,7 @@ The `object` element defines anything that can be added by other software.
 
   - `specialstitch` _by Embroidery Studio_ - A special stitch from the XSD pattern.
 
-    Stitch objects of this type have a `modindex` attribute that specifies the special stitch model defined in the `special_stitch_models` section.
+    Stitch objects of this type have a `modindex` attribute that specifies the index of the special stitch model defined in the `special_stitch_models` section.
     If this attribute is missing or empty, then we consider this special stitch to be invalid.
 
     Also, special stitches have a `rotation`, `flip_x` and `flip_y` attributes.
