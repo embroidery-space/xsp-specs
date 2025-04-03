@@ -394,6 +394,9 @@ The `object` element defines anything that can be added by other software.
 
   The known values are:
 
+  - `quarter` - A small (1/4) full stitch.
+    Is is also known as a petit.
+
   - `specialstitch` _by Embroidery Studio_ - A special stitch from the XSD pattern.
 
     Stitch objects of this type have a `modindex` attribute that specifies the special stitch model defined in the `special_stitch_models` section.
