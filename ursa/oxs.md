@@ -15,40 +15,41 @@ You can find a practical OXS parser [here](https://github.com/embroidery-space/e
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC 2119](https://datatracker.ietf.org/doc/html/rfc2119).
 
-Here are some specification conventions:
+### Specification conventions:
 
 1. All element and property names SHOULD be in [snake case](https://en.wikipedia.org/wiki/Snake_case).
 
-Here are common data types used in this specification:
+### Common data types used in this specification:
 
 - `string` - Represents a sequence of characters encoded in UTF-8.
 - `integer` - Represents a whole number without a fractional component in base 10.
 
-  Currently, only unsigned integers are expected to be used.
+  -  Currently, only unsigned integers are expected to be used.
 
 - `number` - Represents a numeric value that can be either an integer or a floating-point number.
 
-  Currently, only unsigned number are expected to be used.
+  - Currently, only unsigned number are expected to be used.
 
-  Stringified floating-point numbers can contain a decimal separator (period, `.`).
+  - Stringified floating-point numbers can contain a decimal separator (period, `.`).
   Only the period (`.`) is allowed as a decimal separator.
 
-  However, there are some software that use a comma (`,`) as a decimal separator.
-  Therefore, it is RECOMMENDED to normalize the string before parsing the value.
+  - However, there are some software that use a comma (`,`) as a decimal separator.
+    Therefore, it is RECOMMENDED to normalize the string before parsing the value.
 
-  The exponential notation is not expected to be used, but it should be supported.
+  - The exponential notation is not expected to be used, but it should be supported.
 
 - `color` - Represents a hexadecimal representation of an RGB color.
-  The color value is specified as a six-character string (`RRGGBB`) without a leading `#`. Each component (`RR`, `GG`, `BB`) is a two-digit hexadecimal number (`00` to `FF`) representing the red, green, and blue color channels, respectively.
 
-  In addition to specific color values, the special value `nil` is allowed, indicating the absence of a color.
+  - The color value is specified as a six-character string (`RRGGBB`) without a leading `#`. Each component (`RR`, `GG`, `BB`) is a two-digit hexadecimal number (`00` to `FF`) representing the red, green, and blue color channels, respectively.
+
+  - In addition to specific color values, the special value `nil` is allowed, indicating the absence of a color.
 
 - `boolean` - Represents a logical value and can have one of two states: `true` or `false`.
 
-  Only lowercase strings are allowed.
+  - Only lowercase state strings are allowed.
 
-  However, there are some software that use uppercase strings.
-  Therefore, it is RECOMMENDED to normalize the string before parsing the value.
+  - However, there are some software that use uppercase strings.
+    Therefore, it is RECOMMENDED to normalize the string before parsing the value.
 
 ## `chart`
 
