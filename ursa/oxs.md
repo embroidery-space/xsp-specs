@@ -2,7 +2,7 @@
 
 OXS is an open file format for cross-stitch patterns that was created by [UrsaSoftware](https://ursasoftware.com).
 
-Since OXS is built on XML, it is simple to examine its structure and is highly extensible, allowing users to add their own attributes and define custom sections and elements.
+Since OXS is built on XML, it is simple to examine its structure. The format is highly extensible, allowing users to add their own attributes and define custom sections and elements.
 
 This document offers a detailed specification of the OXS format based on the official version, along with a thorough explanation of each section and element, outline of the usage of each property, description of the expected behavior for developers, collection of application-specific items, and additional examples.
 
