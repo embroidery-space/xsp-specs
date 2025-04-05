@@ -158,12 +158,15 @@ Defines color information in the palette and can represent a thread, bead, or an
   In Ursa, they are separated by four spaces.
   In other programs, they can be separated by a single space.
 
-  In any case, the last part of the string splitted by a space is the number (we expect the number to be a solid string), and everything before it is the brand.
+  For some reason, WinStitch adds `[+]` to the end of the `number` if the color is a blend.
+  Therefore, it is RECOMMENDED to remove it to correctly parse the color number.
+
+  In a normalized string, the last part of the string splitted by a space is the number (we expect the number to be a solid string), and everything before it is the brand.
 
 - `name`: string.
 - `color`: color - Defaults to `FFFFFF` (white) for cloth/fabric and `FF00FF` (magenta) for materials.
-- `printcolor`: color.
-- `blendcolor`: color.
+- `printcolor`: color - Specifies the color used for color printing on paper.
+- `blendcolor`: color - Specifies the color blended with the base color.
 - `comments`: string.
 - `strands`: integer.
 - `symbol`: integer or string - Specifies the symbol used to graphically represent the color.
@@ -182,34 +185,11 @@ If the `index` attribute is not specified, the first `palette_item` in the palet
 ```xml
 <palette>
   <!-- The element with index 0 defines the cloth/fabric color. -->
-  <palette_item
-    index="0"
-    number="cloth"
-    name="cloth"
-    color="FFFFFF"
-    printcolor="FFFFFF"
-    blendcolor="nil"
-    comments=""
-    strands="2"
-    symbol="100"
-    bsstrands="2"
-    bscolor="FFFFFF"
-  />
+  <palette_item index="0" number="cloth" name="cloth" color="FFFFFF" />
 
   <!-- Other elements define the material colors. -->
-  <palette_item
-    index="1"
-    number="DMC    310"
-    name="Black"
-    color="2C3225"
-    printcolor="000000"
-    blendcolor="nil"
-    comments=""
-    strands="2"
-    symbol="100"
-    bsstrands="1"
-    bscolor="2C3225"
-  />
+  <palette_item index="1" number="DMC    310" name="Black" color="2C3225" printcolor="000000" strands="2" symbol="100" bsstrands="1" bscolor="2C3225" />
+  <palette_item index="2" number="DMC 158 [+]" name="DMC 158 [+] DMC 208" color="303065" blendcolor="824596" printcolor="593A7D" />
 </palette>
 ```
 
