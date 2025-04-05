@@ -15,23 +15,23 @@ You can find a practical OXS parser [here](https://github.com/embroidery-space/e
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC 2119](https://datatracker.ietf.org/doc/html/rfc2119).
 
-### Specification conventions:
+### Specification Conventions
 
 1. All element and property names SHOULD be in [snake case](https://en.wikipedia.org/wiki/Snake_case).
 
-### Common data types used in this specification:
+### Common Data Types
 
 - `string` - Represents a sequence of characters encoded in UTF-8.
 - `integer` - Represents a whole number without a fractional component in base 10.
 
-  -  Currently, only unsigned integers are expected to be used.
+  - Currently, only unsigned integers are expected to be used.
 
 - `number` - Represents a numeric value that can be either an integer or a floating-point number.
 
   - Currently, only unsigned number are expected to be used.
 
   - Stringified floating-point numbers can contain a decimal separator (period, `.`).
-  Only the period (`.`) is allowed as a decimal separator.
+    Only the period (`.`) is allowed as a decimal separator.
 
   - However, there are some software that use a comma (`,`) as a decimal separator.
     Therefore, it is RECOMMENDED to normalize the string before parsing the value.
