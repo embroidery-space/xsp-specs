@@ -1,8 +1,9 @@
 #pragma endian little
+#pragma description Pattern Maker Color Brand List
 
 import type.types.rust;
 
-import types.cstr;
+import pmaker.cstr;
 
 usize VENDOR_NAME_LENGTH = 259 + 1;
 usize GROUP_NAME_LENGTH = 259 + 1;
