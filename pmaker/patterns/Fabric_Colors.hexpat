@@ -1,4 +1,5 @@
 #pragma endian little
+#pragma description Pattern Maker Fabric Colors
 
 import type.types.rust;
 

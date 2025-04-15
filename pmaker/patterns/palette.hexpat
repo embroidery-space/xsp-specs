@@ -1,5 +1,6 @@
 #pragma magic [?? ?? ?? ??] @ 0x00
 #pragma endian little
+#pragma description Pattern Maker Palette
 
 import hex.provider;
 import type.types.rust;

@@ -1,4 +1,5 @@
 #pragma endian little
+#pragma description Pattern Maker Color Brand List
 
 import type.types.rust;
 

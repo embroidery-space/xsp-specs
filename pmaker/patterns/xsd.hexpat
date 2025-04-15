@@ -1,5 +1,6 @@
 #pragma magic [10 05 ?? ?? ?? ??] @ 0x00
 #pragma endian little
+#pragma description Pattern Maker XSD Pattern
 
 import std.io;
 import std.string;
