@@ -1,6 +1,6 @@
 # Cross-Stitch Pattern Specifications
 
-This repository contains specifications for the cross-stitch pattern file formats supported by the [Embroidery Studio](https://github.com/embroidery-space/embroidery-studio).
+This repository contains specifications for the cross-stitch pattern file formats supported by the [Embroiderly](https://github.com/embroidery-space/embroiderly).
 
 ## Orientation
 

@@ -9,7 +9,7 @@ This document offers a detailed specification of the OXS format, extending the o
 It adds thorough explanation of each section and element, outlines the usage of each attribute and defines the expected behavior of parsers.
 There's also a collection of application-specific items and additional examples.
 
-You can find a practical OXS parser [here](https://github.com/embroidery-space/embroidery-studio/blob/main/src-tauri/src/core/parsers/oxs.rs).
+You can find a practical OXS parser [here](https://github.com/embroidery-space/embroiderly/blob/main/src-tauri/src/core/parsers/oxs.rs).
 
 ## Conventions
 
@@ -335,14 +335,14 @@ Defines back stitch information.
   The known values are:
 
   - `backstitch` - A regular back stitch.
-  - `straightstitch` _by Embroidery Studio_ - A long back stitch.
+  - `straightstitch` _by Embroiderly_ - A long back stitch.
 
-    In Embroidery Studio, back stitches can be only one cell long.
+    In Embroiderly, back stitches can be only one cell long.
     Straight stitches, in contrast, can be any length.
 
-  - `curvedstitch` _by Embroidery Studio_ - A curved stitch.
+  - `curvedstitch` _by Embroiderly_ - A curved stitch.
 
-    In Embroidery Studio, curved stitches are part of special stitch models.
+    In Embroiderly, curved stitches are part of special stitch models.
 
     Curved stitches have an unspecified number of `x` and `y` coordinates.
 
@@ -386,7 +386,7 @@ The `object` element defines anything that can be added by other software.
   - `quarter` - A small (1/4) full stitch.
     It is also known as a petit.
 
-  - `specialstitch` _by Embroidery Studio_ - A special stitch from the XSD pattern.
+  - `specialstitch` _by Embroiderly_ - A special stitch from the XSD pattern.
 
     Stitch objects of this type have a `modindex` attribute that specifies the index of the special stitch model defined in the `special_stitch_models` section.
     If this attribute is missing or empty, then we consider this special stitch to be invalid.
@@ -404,7 +404,7 @@ The `object` element defines anything that can be added by other software.
 </ornaments_inc_knots_and_beads>
 ```
 
-### `special_stitch_models` _by Embroidery Studio_
+### `special_stitch_models` _by Embroiderly_
 
 Holds `model` elements.
 
