@@ -193,6 +193,30 @@ If the `index` attribute is not specified, the first `palette_item` in the palet
 </palette>
 ```
 
+##### `blend`
+
+This is a special element used by Embroiderly to store additional information about blends.
+
+Using the `blendcolor` attribute of the `palette_item` element you can specify only one color which is blended with the main color.
+In contrast, using the `blend` element you can specify any number of colors used in a blend.
+
+- `number`: string.
+- `name`: string.
+- `color`: color.
+- `strands`: integer.
+
+These attributes are the same as in the `palette_item` element.
+
+```xml
+<!-- This color is a blend of four colors. -->
+<palette_item index="1" number="Blend 1" name="Crimson Red" color="CB3B41" strands="4">
+  <blend number="DMC 326" name="Rose VY DK" color="A9353E" strands="1" />
+  <blend number="DMC 309" name="Geranium" color="B74254" strands="1" />
+  <blend number="DMC 606" name="Bright Orange-Red" color="E7464B" strands="1" />
+  <blend number="DMC 3801" name="Christmas Red LT" color="E02E23" strands="1" />
+</palette_item>
+```
+
 ### General Processing of Stitches
 
 Before we start describing stitch sections, it is worth defining how we handle all stitch objects in general.
