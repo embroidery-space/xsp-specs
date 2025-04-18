@@ -1,0 +1,11 @@
+{
+  "private": true,
+  "scripts": {
+    "fmt": "prettier --check ./**/*.md",
+    "lint": "markdownlint-cli2 \"./**/*.md\" \"#node_modules\""
+  },
+  "devDependencies": {
+    "markdownlint-cli2": "^0.17.2",
+    "prettier": "^3.5.3"
+  }
+}

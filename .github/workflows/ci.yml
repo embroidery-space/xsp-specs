@@ -1,0 +1,22 @@
+name: CI
+on:
+  pull_request:
+    branches: ["main"]
+    types: ["opened", "reopened", "edited", "synchronize"]
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  specs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - name: Check formatting
+        run: npm run fmt
+      - name: Lint
+        run: npm run lint
