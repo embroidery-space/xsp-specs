@@ -1,4 +1,4 @@
-# OXS (Open Cross-Stitch)
+# Open Cross-Stitch File Format (OXS)
 
 OXS is an open file format for cross-stitch patterns that was created by [UrsaSoftware](https://ursasoftware.com).
 
@@ -9,7 +9,7 @@ This document offers a detailed specification of the OXS format, extending the o
 It adds thorough explanation of each section and element, outlines the usage of each attribute and defines the expected behavior of parsers.
 There's also a collection of application-specific items and additional examples.
 
-You can find a practical OXS parser [here](https://github.com/embroidery-space/embroiderly/blob/main/src-tauri/src/core/parsers/oxs.rs).
+> You can find a practical OXS parser [here](https://github.com/embroidery-space/embroiderly/blob/main/src-tauri/src/core/parsers/oxs.rs).
 
 ## Conventions
 
