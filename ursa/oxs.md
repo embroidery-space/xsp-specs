@@ -260,6 +260,13 @@ Defines full stitch information.
 - `palindex`: integer.
 - `marked`: boolean.
 
+<figure>
+  <img src="../images/ursa/oxs/fullstitches.png" alt="Full stitches in WinStitch."/>
+  <figcaption>
+    Full stitches in WinStitch.
+  </figcaption>
+</figure>
+
 ```xml
 <fullstitches>
   <!-- This stitch is "empty" because it uses the cloth/fabric color. -->
@@ -302,10 +309,12 @@ Defines part stitch information.
 
 - `marked`: boolean.
 
-![Part stitches in WinStitch](/images/ursa/oxs/partstitches.png)
-
-This is a screenshot from WinStitch that shows half/gobeling and three-quarter stitches.
-The left part of the screenshot is in the "blocks" view and the right part is in the "stitches" view.
+<figure>
+  <img src="../images/ursa/oxs/partstitches.png" alt="Part stitches in WinStitch."/>
+  <figcaption>
+    Half/gobeling and three-quarter stitches in WinStitch.
+  </figcaption>
+</figure>
 
 1. Half/Gobelin stitches:
 
