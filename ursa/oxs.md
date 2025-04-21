@@ -430,9 +430,9 @@ Defines back stitch information.
 
 ```xml
 <backstitches>
-  <backstitch x1="68" x2="68" y1="62" y2="63" palindex="3" objecttype="backstitch"/>
-  <backstitch x1="32" x2="31" y1="7" y2="7" palindex="1" objecttype="daisy"/>
-  <backstitch x1="27.5" x2="36" y1="11.5" y2="10" palindex="1" objecttype="bugle"/>
+  <backstitch x1="2" x2="5" y1="2" y2="2.5" palindex="3" objecttype="backstitch" sequence="0"/>
+  <backstitch x1="3" x2="4" y1="3" y2="2" palindex="1" objecttype="daisy" sequence="0"/>
+  <backstitch x1="6" x2="6" y1="2" y2="5" palindex="1" objecttype="bugle" sequence="0"/>
   <backstitch
     x1="1.00" y1="0.00"
     x2="0.43" y2="0.26"
