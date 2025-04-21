@@ -368,6 +368,47 @@ Defines back stitch information.
   The known values are:
 
   - `backstitch` - A regular back stitch.
+
+    <figure>
+      <img src="../images/ursa/oxs/backstitches.png" alt="Back stitches in WinStitch."/>
+      <figcaption>
+        Back stitches in WinStitch.
+      </figcaption>
+    </figure>
+
+  - `daisy` _by Ursa Software_ - A simple, single-loop embroidery stitch, usually joined together into a chain.
+    Thus, also known as a chain stitch.
+
+    <figure>
+      <img src="../images/ursa/oxs/backstitches-daisy.png" alt="Daisy stitches in WinStitch."/>
+      <figcaption>
+        Daisy stitches in WinStitch.
+      </figcaption>
+    </figure>
+
+    <figure>
+      <img src="../images/ursa/oxs/backstitches-daisy-real.png" alt="Daisy/chain stitches in reality."/>
+      <figcaption>
+        Daisy/chain stitches in reality.
+      </figcaption>
+    </figure>
+
+  - `bugle` _by Ursa Software_ - A stitch with a bugle bead.
+
+    <figure>
+      <img src="../images/ursa/oxs/backstitches-bugle.png" alt="Bugle beads in WinStitch."/>
+      <figcaption>
+        Bugle beads in WinStitch.
+      </figcaption>
+    </figure>
+
+    <figure>
+      <img src="../images/ursa/oxs/backstitches-bugle-real.png" alt="Bugle beads in reality."/>
+      <figcaption>
+        Bugle beads in reality.
+      </figcaption>
+    </figure>
+
   - `straightstitch` _by Embroiderly_ - A long back stitch.
 
     In Embroiderly, back stitches can be only one cell long.
@@ -378,6 +419,8 @@ Defines back stitch information.
     In Embroiderly, curved stitches are part of special stitch models.
 
     Curved stitches have an unspecified number of `x` and `y` coordinates.
+
+  The software that does not actually support `daisy`, `bugle` or `straightstitch` objects MAY process them as `backstitch`.
 
 - `marked`: boolean.
 
