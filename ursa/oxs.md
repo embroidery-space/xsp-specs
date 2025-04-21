@@ -422,6 +422,10 @@ Defines back stitch information.
 
   The software that does not actually support `daisy`, `bugle` or `straightstitch` objects MAY process them as `backstitch`.
 
+- `sequence`: integer - Specifies the order in which the elements are rendered.
+  In fact, it represents the z-index.
+  Objects with a higher value of `sequence` overlap objects with a lower value of `sequence`.
+
 - `marked`: boolean.
 
 ```xml
