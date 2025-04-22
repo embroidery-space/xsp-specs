@@ -514,6 +514,69 @@ Attributes:
       - `1` - backward.
       - `2` - forward.
 
+  - `horizontalhalf`, `verticalhalf` _by UrsaSoftware_ - A stitch with half size of a full stitch.
+
+    <figure>
+      <img src="../images/ursa/oxs/hv-halfstitches.png" alt="Horizontal and vertical half stitches in WinStitch."/>
+      <figcaption>
+        Horizontal and vertical half stitches in WinStitch.
+      </figcaption>
+    </figure>
+
+  - `fullcross` _by UrsaSoftware_ - A normal cross stitch which, unlike a `fullstitch`, can be placed anywhere on the cloth/fabric.
+
+    <figure>
+      <img src="../images/ursa/oxs/fullcrosses.png" alt="Full croses in WinStitch."/>
+      <figcaption>
+        Full croses in WinStitch.
+      </figcaption>
+    </figure>
+
+  - `3x2`, `2x3`, `3x3`, `4x4`, `4x2`, `6x2`, `8x2`, `10x2`, `12x2`, `16x2` _by UrsaSoftware_ - Normal stitches that are slightly larger than usual.
+
+    They are typically used for knitting.
+
+    <figure>
+      <img src="../images/ursa/oxs/large-stitches.png" alt="Large stitches in WinStitch."/>
+      <figcaption>
+        Large stitches in WinStitch.
+      </figcaption>
+    </figure>
+
+  - `topleftlongtriangle` `botrightlongtriangle` `toprightlongtriangle` `botleftlongtriangle` `topleftwidetriangle` `botrightwidetriangle` `botleftwidetriangle` `toprightwidetriangle` _by UrsaSoftware_ - Triangle stitches.
+
+    <figure>
+      <img src="../images/ursa/oxs/triangle-stitches.png" alt="Triangle stitches in WinStitch."/>
+      <figcaption>
+        Triangle stitches in WinStitch.
+      </figcaption>
+    </figure>
+
+  - `knot` - A french knot.
+
+    <figure>
+      <img src="../images/ursa/oxs/french-knots.png" alt="French knots in WinStitch."/>
+      <figcaption>
+        French knots in WinStitch.
+      </figcaption>
+    </figure>
+
+  - `bead` - A bead.
+    In WinStitch it is 2 mm in size.
+
+    Additional attributes:
+
+    - `length`, `diameter` _by Embroiderly_: number - Bead dimensions.
+
+  - `bead1mm`, `bead2.5mm`, `bead3mm`, `bead5mm`, `bead6mm`, `bead8mm`, `bead12mm` - Beads with the size specified.
+
+    <figure>
+      <img src="../images/ursa/oxs/beads.png" alt="Beads in WinStitch."/>
+      <figcaption>
+        Beads in WinStitch.
+      </figcaption>
+    </figure>
+
   - `specialstitch` _by Embroiderly_ - A special stitch from the XSD pattern.
 
     Stitch objects of this type have a `modindex` attribute that specifies the index of the special stitch model defined in the `special_stitch_models` section.
@@ -539,6 +602,43 @@ Attributes:
   <object x1="5" y1="5" palindex="2" objecttype="tent" direction="1"/>
   <!-- A forward half stitch. -->
   <object x1="5" y1="5" palindex="2" objecttype="tent" direction="2"/>
+
+  <!-- Horizontal and vertical half stitches. -->
+  <object x1="2" y1="2" palindex="3" objecttype="horizontalhalf"/>
+  <object x1="3" y1="3" palindex="3" objecttype="verticalhalf"/>
+
+  <!-- Full cross. -->
+  <object x1="3.5" y1="2.5" palindex="2" objecttype="fullcross" />
+
+  <!-- Large stitches. -->
+  <object x1="2" y1="2" palindex="1" objecttype="2x3" />
+  <object x1="3.5" y1="2" palindex="1" objecttype="3x2" />
+  <object x1="2" y1="4" palindex="2" objecttype="3x3" />
+  <object x1="4" y1="3.5" palindex="2" objecttype="4x4" />
+  <object x1="2" y1="6" palindex="3" objecttype="4x2" />
+  <object x1="5" y1="6" palindex="3" objecttype="6x2" />
+  <object x1="2" y1="8" palindex="4" objecttype="10x2" />
+  <object x1="2" y1="10" palindex="4" objecttype="12x2" />
+  <object x1="2" y1="12" palindex="5" objecttype="14x2" />
+  <object x1="2" y1="14" palindex="5" objecttype="16x2" />
+
+  <!-- Triangle stitches. -->
+  <object x1="1" y1="1" palindex="1" objecttype="topleftlongtriangle"/>
+  <object x1="1" y1="2" palindex="1" objecttype="botrightlongtriangle"/>
+  <object x1="3" y1="1" palindex="2" objecttype="toprightlongtriangle"/>
+  <object x1="3" y1="2" palindex="2" objecttype="botleftlongtriangle"/>
+  <object x1="1" y1="5" palindex="3" objecttype="topleftwidetriangle"/>
+  <object x1="2" y1="5" palindex="3" objecttype="botrightwidetriangle"/>
+  <object x1="1" y1="7" palindex="5" objecttype="botleftwidetriangle"/>
+  <object x1="2" y1="7" palindex="5" objecttype="toprightwidetriangle"/>
+
+  <!-- French knot. -->
+  <object x1="1" y1="1" palindex="2" objecttype="knot" />
+
+  <!-- Beads. -->
+  <object x1="1.5" y1="1.5" palindex="1" objecttype="bead1mm" />
+  <object x1="3.5" y1="1.5" palindex="1" objecttype="bead" />
+  <object x1="5.5" y1="1.5" palindex="1" objecttype="bead2.5mm" />
 
   <!-- A special stitch. -->
   <object x1="10" y1="5.5" palindex="3" modindex="0" rotation="90" flip_x="true" flip_y="false" objecttype="specialstitch"/>
