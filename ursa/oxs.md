@@ -502,6 +502,18 @@ Attributes:
       If `true`, we consider this stitch to be a **petit** stitch.
       Otherwise, we consider this stitch to be a **quarter** stitch.
 
+  - `tent` _by XSPro Platinum (DP Software)_ - A half stitch.
+    It MAY represent the same stitch as the `partstitch` element with the `direction` set to `3` or `4`.
+
+    Additional attributes:
+
+    - `direction`: integer - Specifies the direction of the part stitch.
+
+      The possible values are:
+
+      - `1` - backward.
+      - `2` - forward.
+
   - `specialstitch` _by Embroiderly_ - A special stitch from the XSD pattern.
 
     Stitch objects of this type have a `modindex` attribute that specifies the index of the special stitch model defined in the `special_stitch_models` section.
