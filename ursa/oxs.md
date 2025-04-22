@@ -503,7 +503,7 @@ Attributes:
       Otherwise, we consider this stitch to be a **quarter** stitch.
 
   - `tent` _by XSPro Platinum (DP Software)_ - A half stitch.
-    It MAY represent the same stitch as the `partstitch` element with the `direction` set to `3` or `4`.
+    It MAY represent the type of stitches as the `partstitch` elements with the `direction` set to `3` or `4`.
 
     Additional attributes:
 
