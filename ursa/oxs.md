@@ -528,10 +528,20 @@ Attributes:
 
 ```xml
 <ornaments_inc_knots_and_beads>
-  <object x1="2" y1="3.5" palindex="1" objecttype="fullcross"/>
-  <object x1="5" y1="6.5" palindex="1" objecttype="4x4"/>
-  <object x1="8" y1="12" palindex="1" objecttype="minikey"/>
-  <object x1="10" y1="5.5" palindex="1" modindex="0" rotation="90" flip_x="true" flip_y="false" objecttype="specialstitch"/>
+  <!-- These objects should be rendered as petits. -->
+  <object x1="1" y1="4" palindex="1" objecttype="quarter"/>
+  <object x1="2" y1="4" palindex="1" objecttype="quarter" petit="true"/>
+
+  <!-- This object should be rendered as a quarter stitch. -->
+  <object x1="4" y1="4" palindex="1" objecttype="quarter" petit="false"/>
+
+  <!-- A backward half stitch. -->
+  <object x1="5" y1="5" palindex="2" objecttype="tent" direction="1"/>
+  <!-- A forward half stitch. -->
+  <object x1="5" y1="5" palindex="2" objecttype="tent" direction="2"/>
+
+  <!-- A special stitch. -->
+  <object x1="10" y1="5.5" palindex="3" modindex="0" rotation="90" flip_x="true" flip_y="false" objecttype="specialstitch"/>
 </ornaments_inc_knots_and_beads>
 ```
 
