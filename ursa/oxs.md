@@ -105,6 +105,8 @@ The first section is OPTIONAL and is purely informational - just a brief format 
 This section is OPTIONAL and defines general pattern properties.
 It is RECOMMENDED to keep this section at the top of the file, as it can be used as a reference for parsing the pattern file.
 
+Attributes:
+
 - `oxsversion`: string - The version of the OXS format.
   If not specified, we assume that the latest OXS version is used (currently, `1.0`).
 - `software`: string - Specifies the software used to write the pattern file.
@@ -159,6 +161,8 @@ Note that the size of the palette is not restricted and can contain any number o
 #### `palette_item`
 
 Defines color information in the palette and can represent a thread, bead, or any other material color.
+
+Attributes:
 
 - `index`: integer.
 - `number`: string - Specifies both the color brand and the color number (for example, `DMC 310`).
@@ -215,6 +219,8 @@ This is a special element used by Embroiderly to store additional information ab
 Using the `blendcolor` attribute of the `palette_item` element you can specify only one color which is blended with the main color.
 In contrast, using the `blend` element you can specify any number of colors used in a blend.
 
+Attributes:
+
 - `number`: string.
 - `name`: string.
 - `color`: rgb.
@@ -270,6 +276,8 @@ If the `fullstitches` tag is missing or empty, this means that the pattern does 
 
 Defines full stitch information.
 
+Attributes:
+
 - `x`: number.
 - `y`: number.
 - `palindex`: integer.
@@ -301,6 +309,8 @@ Holds `partstitch` elements.
 #### `partstitch`
 
 Defines part stitch information.
+
+Attributes:
 
 - `x`: number.
 - `y`: number.
@@ -372,6 +382,8 @@ If the `backstitches` tag is missing or empty, this means that the pattern does 
 #### `backstitch`
 
 Defines back stitch information.
+
+Attributes:
 
 - `x1`: number.
 - `x2`: number.
@@ -471,6 +483,8 @@ If the `ornaments_inc_knots_and_beads` tag is missing or empty, this means that 
 
 The `object` element defines anything that can be added by other software.
 
+Attributes:
+
 - `x1`: number.
 - `y1`: number.
 - `palindex`: integer.
@@ -480,6 +494,13 @@ The `object` element defines anything that can be added by other software.
 
   - `quarter` - A small (1/4) full stitch.
     It is also known as a petit.
+
+    Additional attributes:
+
+    - `petit` _by XSPro Platinum (DP Software)_: boolean - Specifies whether the stitch is actually a **quarter** stitch (1/2 of a half stitch) or a **petit** (1/4 of a full stitch) stitch.
+
+      If `true`, we consider this stitch to be a **petit** stitch.
+      Otherwise, we consider this stitch to be a **quarter** stitch.
 
   - `specialstitch` _by Embroiderly_ - A special stitch from the XSD pattern.
 
