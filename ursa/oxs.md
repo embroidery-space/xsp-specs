@@ -40,7 +40,8 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 - `color` - Represents a hexadecimal representation of an RGB color.
 
-  - The color value is specified as a six-character string (`RRGGBB`) without a leading `#`. Each component (`RR`, `GG`, `BB`) is a two-digit hexadecimal number (`00` to `FF`) representing the red, green, and blue color channels, respectively.
+  - The color value is specified as a six-character string (`RRGGBB`) without a leading `#`.
+    Each component (`RR`, `GG`, `BB`) is a two-digit hexadecimal number (`00` to `FF`) representing the red, green, and blue color channels, respectively.
 
   - In addition to specific color values, the special value `nil` is allowed, indicating the absence of a color.
 
@@ -300,7 +301,7 @@ Defines part stitch information.
   Only applicable for three-quarter stitches.
   Specifies the color on the right.
 
-- `direction`: integer. Specifies the direction of the part stitch.
+- `direction`: integer - Specifies the direction of the part stitch.
 
   The possible values are:
 
