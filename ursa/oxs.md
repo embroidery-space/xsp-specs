@@ -344,7 +344,7 @@ Attributes:
 1. Half/Gobelin stitches:
 
    - The top one is with `direction=3` (forward).
-   - The bottom on is with `direction=4` (backward).
+   - The bottom one is with `direction=4` (backward).
 
 2. Three-quarter stitches:
 
