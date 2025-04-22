@@ -519,7 +519,10 @@ Attributes:
     Stitch objects of this type have a `modindex` attribute that specifies the index of the special stitch model defined in the `special_stitch_models` section.
     If this attribute is missing or empty, then we consider this special stitch to be invalid.
 
-    Also, special stitches have a `rotation`, `flip_x` and `flip_y` attributes.
+    Additional attributes:
+
+    - `rotation`: integer - Specifies the angle of rotation of the stitch in degrees.
+    - `flip_x`, `flip_y`: boolean - Specifies whether the stitch should flipped by along the corresponding axis.
 
 - `marked`: boolean.
 
