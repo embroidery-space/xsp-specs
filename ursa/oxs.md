@@ -38,10 +38,17 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
   - The exponential notation is not expected to be used, but it should be supported.
 
-- `color` - Represents a hexadecimal representation of an RGB color.
+- `rgb` - Represents a hexadecimal representation of an [RGB color](https://en.wikipedia.org/wiki/RGB_color_model).
 
   - The color value is specified as a six-character string (`RRGGBB`) without a leading `#`.
     Each component (`RR`, `GG`, `BB`) is a two-digit hexadecimal number (`00` to `FF`) representing the red, green, and blue color channels, respectively.
+
+  - In addition to specific color values, the special value `nil` is allowed, indicating the absence of a color.
+
+- `cmyk` - Represents a hexadecimal representation of a [CMYK color](https://en.wikipedia.org/wiki/CMYK_color_model).
+
+  - The color value is specified as an eight-character string (`CCMMYYKK`) without a leading `#`.
+    Each component (`CC`, `MM`, `YY`, `KK`) is a two-digit hexadecimal number (`00` to `FF`) representing the cyan, magenta, yellow, and key (mostly, black) color channels, respectively.
 
   - In addition to specific color values, the special value `nil` is allowed, indicating the absence of a color.
 
@@ -165,22 +172,24 @@ Defines color information in the palette and can represent a thread, bead, or an
   In a normalized string, the last part of the string splitted by a space is the number (we expect the number to be a solid string), and everything before it is the brand.
 
 - `name`: string.
-- `color`: color - Defaults to `FFFFFF` (white) for cloth/fabric and `FF00FF` (magenta) for materials.
-- `printcolor`: color - Specifies the color used for color printing on paper.
-- `blendcolor`: color - Specifies the color blended with the base color.
+- `color`: rgb - Defaults to `FFFFFF` (white) for cloth/fabric and `FF00FF` (magenta) for materials.
+- `printcolor`: rgb - Specifies the color used for color printing on paper.
+- `blendcolor`: rgb - Specifies the color blended with the base color.
 - `comments`: string.
 - `strands`: integer - The number of thread for stitching.
   If specified, it SHOULD be in the range of 1 to 6.
 - `symbol`: integer or string - Specifies the symbol used to graphically represent the color.
   It can be a decimal number representing a UTF-8 [code point](https://developer.mozilla.org/en-US/docs/Glossary/Code_point) or a string representing the actual character.
 - `symbol_courier` _by MiniStitch (UrsaSoftware_): string - Specifies the actual symbol character (for example, `A`).
-- `symbolcolor` _by XSPro Platinum (DP Software)_: color - Specifies the font color of the symbol.
+- `symbolcolor` _by XSPro Platinum (DP Software)_: rgb - Specifies the font color of the symbol.
 - `bsstrands`: integer - The number of thread for stitching back stitches and other "line" stitches.
   If specified, it SHOULD be in the range of 1 to 6.
-- `bscolor`: color - Specifies the color of a back stitch.
+- `bscolor`: rgb - Specifies the color of a back stitch.
 - `fontname` _by XSPro Platinum (DP Software)_: string - Specifies the font family (for example, `Cross Stitch Pro Platinum`) used to draw symbols of this color.
 - `metalic` _by XSPro Platinum (DP Software)_: boolean - Specifies whether the color represents a metalic thread.
 - `fluorescent` _by XSPro Platinum (DP Software)_: boolean - Specifies whether the color represents a fluorescent thread.
+- `colorcmyk`, `bscolorcmyk`, `printcolorcmyk` _by XSPro Platinum (DP Software)_: cmyk - Specifies the color of the corresponding attribute in the CMYK color model.
+  These are important for publishers who will likely print their patterns on paper, so they want to achieve high-quality thread color reproduction.
 
 All of these attributes except `color` are OPTIONAL.
 If the `color` attribute is missing, empty or `nil`, the application SHOULD replace it with the default color (see notes above) and notify the user about it so that they can fix the issue later.
@@ -208,7 +217,7 @@ In contrast, using the `blend` element you can specify any number of colors used
 
 - `number`: string.
 - `name`: string.
-- `color`: color.
+- `color`: rgb.
 - `strands`: integer.
 
 These attributes are the same as in the `palette_item` element.
