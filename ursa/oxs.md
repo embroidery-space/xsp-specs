@@ -522,7 +522,7 @@ Attributes:
     Additional attributes:
 
     - `rotation`: integer - Specifies the angle of rotation of the stitch in degrees.
-    - `flip_x`, `flip_y`: boolean - Specifies whether the stitch should flipped by along the corresponding axis.
+    - `flip_x`, `flip_y`: boolean - Specifies whether the stitch should be flipped along the corresponding axis.
 
 - `marked`: boolean.
 
