@@ -502,7 +502,7 @@ Attributes:
 
     Additional attributes:
 
-    - `petit` _by XSPro Platinum (DP Software)_: boolean - Specifies whether the stitch is actually a **quarter** stitch (1/2 of a half stitch) or a **petit** (1/4 of a full stitch) stitch.
+    - `petit` _by XSPro Platinum (DP Software)_: boolean - Specifies whether the stitch is actually a **quarter** stitch (1/2 of a half stitch) or a **petit** stitch (1/4 of a full stitch).
 
       If `true`, we consider this stitch to be a **petit** stitch.
       Otherwise, we consider this stitch to be a **quarter** stitch.
