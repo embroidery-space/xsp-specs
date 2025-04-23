@@ -195,6 +195,11 @@ Attributes:
 - `colorcmyk`, `bscolorcmyk`, `printcolorcmyk` _by XSPro Platinum (DP Software)_: cmyk - Specifies the color of the corresponding attribute in the CMYK color model.
   These are important for publishers who will likely print their patterns on paper, so they want to achieve high-quality thread color reproduction.
 
+Additional attributes:
+
+- `kind` _by Embroidery_: string - If the `palette_item` represents a cloth/fabric color, it MAY have a `kind` attribute that specifies the kind of the cloth/fabric.
+  The common values are "Aida", "Evenweave", "Linen".
+
 All of these attributes except `color` are OPTIONAL.
 If the `color` attribute is missing, empty or `nil`, the application SHOULD replace it with the default color (see notes above) and notify the user about it so that they can fix the issue later.
 
