@@ -147,24 +147,24 @@ If some of the attributes are not specified but are required by a particular sof
 />
 ```
 
-### `palette`
-
-Holds `palette_item` elements.
-
-If the `palette` tag is missing or empty, this means that the palette is empty.
-
-During parsing, you can use `properties.palettecount`, if specified, to properly handle the `palette`.
-However, the only source of truth about a palette is the `palette` itself.
-
-Note that the size of the palette is not restricted and can contain any number of `palette_item`s.
-
 #### `palette_item`
 
 Defines color information in the palette and can represent a thread, bead, or any other material color.
 
-Attributes:
+General attributes:
 
 - `index`: integer.
+- `name`: string.
+- `color`: rgb - Defaults to `FFFFFF` (white) for cloth/fabric and `FF00FF` (magenta) for materials.
+- `comments`: string.
+
+Cloth/fabric-specific attributes:
+
+- `kind` _by Embroidery_: string - Specifies the kind of the cloth/fabric.
+  The common values are "Aida", "Evenweave", "Linen".
+
+Material-specific attributes (threads, beads, etc.):
+
 - `number`: string - Specifies both the color brand and the color number (for example, `DMC 310`).
 
   In Ursa, they are separated by four spaces.
@@ -175,11 +175,8 @@ Attributes:
 
   In a normalized string, the last part of the string splitted by a space is the number (we expect the number to be a solid string), and everything before it is the brand.
 
-- `name`: string.
-- `color`: rgb - Defaults to `FFFFFF` (white) for cloth/fabric and `FF00FF` (magenta) for materials.
 - `printcolor`: rgb - Specifies the color used for color printing on paper.
 - `blendcolor`: rgb - Specifies the color blended with the base color.
-- `comments`: string.
 - `strands`: integer - The number of thread for stitching.
   If specified, it SHOULD be in the range of 1 to 6.
 - `symbol`: integer or string - Specifies the symbol used to graphically represent the color.
@@ -194,11 +191,6 @@ Attributes:
 - `fluorescent` _by XSPro Platinum (DP Software)_: boolean - Specifies whether the color represents a fluorescent thread.
 - `colorcmyk`, `bscolorcmyk`, `printcolorcmyk` _by XSPro Platinum (DP Software)_: cmyk - Specifies the color of the corresponding attribute in the CMYK color model.
   These are important for publishers who will likely print their patterns on paper, so they want to achieve high-quality thread color reproduction.
-
-Additional attributes:
-
-- `kind` _by Embroidery_: string - If the `palette_item` represents a cloth/fabric color, it MAY have a `kind` attribute that specifies the kind of the cloth/fabric.
-  The common values are "Aida", "Evenweave", "Linen".
 
 All of these attributes except `color` are OPTIONAL.
 If the `color` attribute is missing, empty or `nil`, the application SHOULD replace it with the default color (see notes above) and notify the user about it so that they can fix the issue later.
