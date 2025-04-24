@@ -585,11 +585,10 @@ Attributes:
 
   - `specialstitch` _by Embroiderly_ - A special stitch from the XSD pattern.
 
-    Stitch objects of this type have a `modindex` attribute that specifies the index of the special stitch model defined in the `special_stitch_models` section.
-    If this attribute is missing or empty, then we consider this special stitch to be invalid.
-
     Additional attributes:
 
+    - `modindex`: integer - Specifies the index of the special stitch model defined in the `special_stitch_models` section.
+      If it is missing or empty, we consider this special stitch to be invalid.
     - `rotation`: integer - Specifies the angle of rotation of the stitch in degrees.
     - `flip_x`, `flip_y`: boolean - Specifies whether the stitch should be flipped along the corresponding axis.
 
