@@ -560,13 +560,14 @@ Attributes:
     </figure>
 
   - `bead` - A bead.
-    In WinStitch it is 2 mm in size.
+
+    In WinStitch, it is 2 mm in size.
 
     Additional attributes:
 
     - `length`, `diameter` _by Embroiderly_: number - Bead dimensions.
 
-  - `bead1mm`, `bead2.5mm`, `bead3mm`, `bead5mm`, `bead6mm`, `bead8mm`, `bead12mm` - Beads with the size specified.
+  - `bead1mm`, `bead2.5mm`, `bead3mm`, `bead5mm`, `bead6mm`, `bead8mm`, `bead12mm` _by UrsaSoftware_ - Beads with the size specified.
 
     <figure>
       <img src="../images/ursa/oxs/beads.png" alt="Beads in WinStitch."/>
