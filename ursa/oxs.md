@@ -160,7 +160,7 @@ General attributes:
 
 Cloth/fabric-specific attributes:
 
-- `kind` _by Embroidery_: string - Specifies the kind of the cloth/fabric.
+- `kind` _by Embroiderly_: string - Specifies the kind of the cloth/fabric.
   The common values are "Aida", "Evenweave", "Linen".
 
 Material-specific attributes (threads, beads, etc.):
