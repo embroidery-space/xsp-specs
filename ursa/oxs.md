@@ -177,25 +177,25 @@ Material-specific attributes (threads, beads, etc.):
 
 - `printcolor`: rgb - Specifies the color used for color printing on paper.
 - `blendcolor`: rgb - Specifies the color blended with the base color.
-- `strands`: integer - The number of thread for stitching.
+- `strands`: integer - The number of threads for stitching.
   If specified, it SHOULD be in the range of 1 to 6.
 - `symbol`: integer or string - Specifies the symbol used to graphically represent the color.
   It can be a decimal number representing a UTF-8 [code point](https://developer.mozilla.org/en-US/docs/Glossary/Code_point) or a string representing the actual character.
 - `symbol_courier` _by MiniStitch (UrsaSoftware_): string - Specifies the actual symbol character (for example, `A`).
 - `symbolcolor` _by XSPro Platinum (DP Software)_: rgb - Specifies the font color of the symbol.
-- `bsstrands`: integer - The number of thread for stitching back stitches and other "line" stitches.
+- `bsstrands`: integer - The number of threads for stitching back stitches and other "line" stitches.
   If specified, it SHOULD be in the range of 1 to 6.
 - `bscolor`: rgb - Specifies the color of a back stitch.
 - `fontname` _by XSPro Platinum (DP Software)_: string - Specifies the font family (for example, `Cross Stitch Pro Platinum`) used to draw symbols of this color.
 - `metalic` _by XSPro Platinum (DP Software)_: boolean - Specifies whether the color represents a metalic thread.
 - `fluorescent` _by XSPro Platinum (DP Software)_: boolean - Specifies whether the color represents a fluorescent thread.
 - `colorcmyk`, `bscolorcmyk`, `printcolorcmyk` _by XSPro Platinum (DP Software)_: cmyk - Specifies the color of the corresponding attribute in the CMYK color model.
-  These are important for publishers who will likely print their patterns on paper, so they want to achieve high-quality thread color reproduction.
+  These are important for publishers who will likely print their patterns on paper and want to achieve high repeatability thread color reproduction.
 
 All of these attributes except `color` are OPTIONAL.
 If the `color` attribute is missing, empty or `nil`, the application SHOULD replace it with the default color (see notes above) and notify the user about it so that they can fix the issue later.
 
-The `palette_item` element with index `0` (usually, the first one) always defines the cloth/fabric color.
+The `palette_item` element with index `0` (usually, the first one) MUST always define the cloth/fabric color.
 If the `index` attribute is not specified, the first `palette_item` in the palette is assumed to define the cloth/fabric color.
 
 ```xml
