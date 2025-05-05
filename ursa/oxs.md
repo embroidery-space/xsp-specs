@@ -167,13 +167,13 @@ Material-specific attributes (threads, beads, etc.):
 
 - `number`: string - Specifies both the color brand and the color number (for example, `DMC 310`).
 
-  In Ursa, they are separated by four spaces.
-  In other programs, they can be separated by a single space.
+  Brand and color number SHOULD be separated by a single space.
+  Some software uses 4 spaces.
 
   For some reason, WinStitch adds `[+]` to the end of the `number` if the color is a blend.
   Therefore, it is RECOMMENDED to remove it to correctly parse the color number.
 
-  In a normalized string, the last part of the string splitted by a space is the number (we expect the number to be a solid string), and everything before it is the brand.
+  In a normalized string, the last part of the string separated by a space is the number (we expect the number to be a solid string), and everything before it is the brand.
 
 - `printcolor`: rgb - Specifies the color used for color printing on paper.
 - `blendcolor`: rgb - Specifies the color blended with the base color.
