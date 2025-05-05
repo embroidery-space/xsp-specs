@@ -31,7 +31,7 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
   - Currently, only unsigned number are expected to be used.
 
   - Stringified floating-point numbers can contain a decimal separator (period, `.`).
-    Only the period (`.`) is allowed as a decimal separator.
+    Decimal separator MUST be a period (`.`).
 
   - However, there are some software that use a comma (`,`) as a decimal separator.
     Therefore, it is RECOMMENDED to normalize the string before parsing the value.
@@ -54,7 +54,7 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 - `boolean` - Represents a logical value and can have one of two states: `true` or `false`.
 
-  - Only lowercase state strings are allowed.
+  - State MUST be a lowercase string.
 
   - However, there are some software that use uppercase strings.
     Therefore, it is RECOMMENDED to normalize the string before parsing the value.
