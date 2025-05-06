@@ -108,7 +108,7 @@ It is RECOMMENDED to keep this section at the top of the file, as it can be used
 Attributes:
 
 - `oxsversion`: string - The version of the OXS format.
-  If not specified, we assume that the latest OXS version is used (currently, `1.0`).
+  If not specified, we assume that the OXS version 1.0 is used.
 - `software`: string - Specifies the software used to write the pattern file.
   Can be used to indicate app-specific elements and attributes.
 - `software_version`: string - Specifies the software version used to write the pattern file.
@@ -129,6 +129,8 @@ All of these attributes are OPTIONAL.
 However, it is RECOMMENDED that you specify at least `oxsversion` for consistency, and `chartwidth` and `chartheight` for correct display.
 
 If some of the attributes are not specified but are required by a particular software, they can be replaced by the default value of that software.
+
+Example:
 
 ```xml
 <properties
@@ -173,14 +175,15 @@ Material-specific attributes (threads, beads, etc.):
   For some reason, WinStitch adds `[+]` to the end of the `number` if the color is a blend.
   Therefore, it is RECOMMENDED to remove it to correctly parse the color number.
 
-  In a normalized string, the last part of the string separated by a space is the number (we expect the number to be a solid string), and everything before it is the brand.
+  In a normalized string, the part following the final space indicates the color number, which is expected to be a solid string.
+  Everything before that final space indicates the brand.
 
 - `printcolor`: rgb - Specifies the color used for color printing on paper.
 - `blendcolor`: rgb - Specifies the color blended with the base color.
 - `strands`: integer - The number of threads for stitching.
   If specified, it SHOULD be in the range of 1 to 6.
 - `symbol`: integer or string - Specifies the symbol used to graphically represent the color.
-  It can be a decimal number representing a UTF-8 [code point](https://developer.mozilla.org/en-US/docs/Glossary/Code_point) or a string representing the actual character.
+  It can be a number representing a UTF-8 [code point](https://developer.mozilla.org/en-US/docs/Glossary/Code_point) or a string representing the actual character.
 - `symbol_courier` _by MiniStitch (UrsaSoftware_): string - Specifies the actual symbol character (for example, `A`).
 - `symbolcolor` _by XSPro Platinum (DP Software)_: rgb - Specifies the font color of the symbol.
 - `bsstrands`: integer - The number of threads for stitching back stitches and other "line" stitches.
@@ -197,6 +200,8 @@ If the `color` attribute is missing, empty or `nil`, the application SHOULD repl
 
 The `palette_item` element with index `0` (usually, the first one) MUST always define the cloth/fabric color.
 If the `index` attribute is not specified, the first `palette_item` in the palette is assumed to define the cloth/fabric color.
+
+Example:
 
 ```xml
 <palette>
@@ -224,6 +229,8 @@ Attributes:
 - `strands`: integer.
 
 These attributes are the same as in the `palette_item` element.
+
+Example:
 
 ```xml
 <!-- This color is a blend of four colors. -->
@@ -286,6 +293,8 @@ Attributes:
     Full stitches in WinStitch.
   </figcaption>
 </figure>
+
+Example:
 
 ```xml
 <fullstitches>
@@ -354,7 +363,8 @@ Three-quarter stitches usually represent a single object (and are therefore draw
 However, some applications MAY represent them as a combination of a quarter (1/2 of a half/gobelin stitch) or petit (1/4 of a full stitch) stitch and a half/gobelin stitch.
 
 A single three-quarter stitch can have colors for both sides, so it will fill the entire cell.
-Note that there cannot be more than one `partstitch` object in a cell, although this is not a significant problem.
+
+Example:
 
 ```xml
 <partstitches>
@@ -452,6 +462,8 @@ Attributes:
 
 - `marked`: boolean.
 
+Example:
+
 ```xml
 <backstitches>
   <backstitch x1="2" x2="5" y1="2" y2="2.5" palindex="3" objecttype="backstitch" sequence="0"/>
@@ -478,7 +490,7 @@ If the `ornaments_inc_knots_and_beads` tag is missing or empty, this means that 
 
 #### `object`
 
-The `object` element defines anything that can be added by other software.
+The `object` element defines anything that can be added by a specific software.
 
 Attributes:
 
@@ -530,7 +542,7 @@ Attributes:
       </figcaption>
     </figure>
 
-  - `3x2`, `2x3`, `3x3`, `4x4`, `4x2`, `6x2`, `8x2`, `10x2`, `12x2`, `16x2` _by UrsaSoftware_ - Normal stitches that are slightly larger than usual.
+  - `3x2`, `2x3`, `3x3`, `4x4`, `4x2`, `6x2`, `8x2`, `10x2`, `12x2`, `16x2` _by UrsaSoftware_ - Normal stitches that are larger than usual.
 
     They are typically used for knitting.
 
@@ -563,10 +575,6 @@ Attributes:
 
     In WinStitch, it is 2 mm in size.
 
-    Additional attributes:
-
-    - `length`, `diameter` _by Embroiderly_: number - Bead dimensions.
-
   - `bead1mm`, `bead2.5mm`, `bead3mm`, `bead5mm`, `bead6mm`, `bead8mm`, `bead12mm` _by UrsaSoftware_ - Beads with the size specified.
 
     <figure>
@@ -586,6 +594,8 @@ Attributes:
     - `flip_x`, `flip_y`: boolean - Specifies whether the stitch should be flipped along the corresponding axis.
 
 - `marked`: boolean.
+
+Example:
 
 ```xml
 <ornaments_inc_knots_and_beads>
@@ -653,6 +663,7 @@ If the `special_stitch_models` tag is missing or empty, this means that the patt
 
 Defines special stitch model information.
 
+- `index`: integer.
 - `unique_name`: string.
 - `name`: string.
 - `width`: number.
@@ -660,20 +671,24 @@ Defines special stitch model information.
 
 The `model` element contains `backstitch` (with object types `backstitch`, `straightstitch`, `curvedstitch`) and `object` elements (with object type `knot`).
 
-The `palindex` attribute is not actually used for special stitch models, but is specified to make their elements valid.
+The `palindex` attribute of the model elements is always `0`.
+Thus, the model elements do not actually have a color.
+Instead, when we render a special stitch that has this model, we use the color of that stitch for all model elements.
+
+Example:
 
 ```xml
 <special_stitch_models>
-  <model unique_name="Rhodes Heart - over 6" name="Rhodes Heart" width="3.0" height="2.5">
-    <backstitch x1="1.0" x2="2.0" y1="2.0" y2="0.0" palindex="1" objecttype="straightstitch"/>
-    <backstitch x1="0.5" x2="2.5" y1="1.5" y2="0.0" palindex="1" objecttype="straightstitch"/>
-    <backstitch x1="0.0" x2="3.0" y1="1.0" y2="0.5" palindex="1" objecttype="straightstitch"/>
-    <backstitch x1="0.0" x2="3.0" y1="0.5" y2="1.0" palindex="1" objecttype="straightstitch"/>
-    <backstitch x1="0.5" x2="2.5" y1="0.0" y2="1.5" palindex="1" objecttype="straightstitch"/>
-    <backstitch x1="1.0" x2="2.0" y1="0.0" y2="2.0" palindex="1" objecttype="straightstitch"/>
-    <backstitch x1="1.5" x2="1.5" y1="0.5" y2="2.5" palindex="1" objecttype="straightstitch"/>
+  <model index="0" unique_name="Rhodes Heart - over 6" name="Rhodes Heart" width="3.0" height="2.5">
+    <backstitch x1="1.0" x2="2.0" y1="2.0" y2="0.0" palindex="0" objecttype="straightstitch"/>
+    <backstitch x1="0.5" x2="2.5" y1="1.5" y2="0.0" palindex="0" objecttype="straightstitch"/>
+    <backstitch x1="0.0" x2="3.0" y1="1.0" y2="0.5" palindex="0" objecttype="straightstitch"/>
+    <backstitch x1="0.0" x2="3.0" y1="0.5" y2="1.0" palindex="0" objecttype="straightstitch"/>
+    <backstitch x1="0.5" x2="2.5" y1="0.0" y2="1.5" palindex="0" objecttype="straightstitch"/>
+    <backstitch x1="1.0" x2="2.0" y1="0.0" y2="2.0" palindex="0" objecttype="straightstitch"/>
+    <backstitch x1="1.5" x2="1.5" y1="0.5" y2="2.5" palindex="0" objecttype="straightstitch"/>
   </model>
-  <model unique_name="Lazy Daisy" name="Lazy Daisy" width="1.0" height="1.5">
+  <model index="1" unique_name="Lazy Daisy" name="Lazy Daisy" width="1.0" height="1.5">
     <backstitch
       x1="1.00" y1="0.00"
       x2="0.43" y2="0.26"
@@ -682,12 +697,12 @@ The `palindex` attribute is not actually used for special stitch models, but is 
       x5="0.50" y5="1.06"
       x6="0.89" y6="0.66"
       x7="1.10" y7="0.10"
-      palindex="1" objecttype="curvedstitch"
+      palindex="0" objecttype="curvedstitch"
     />
     <backstitch
       x1="0.03" y1="1.13"
       x2="0.23" y2="0.93"
-      palindex="1" objecttype="curvedstitch"
+      palindex="0" objecttype="curvedstitch"
     />
   </model>
 </special_stitch_models>
