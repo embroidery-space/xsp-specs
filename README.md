@@ -2,15 +2,13 @@
 
 This repository contains specifications for the cross-stitch pattern file formats supported by the [Embroidery Studio](https://github.com/embroidery-space/embroidery-studio).
 
-## Orientation
-
-```
-oxs/ # Everything related to the Open Cross-Stitch file format.
-pmaker/ # Everything related to the Pattern Maker resources (patterns, colour palettes, etc.).
-├── includes/ # A module set that encapsulates related or utility types.
-│   ├── types/ # Utility types.
-│   └── xsd/ # XSD components.
-├── Color_Brand_List.hexpat # Describes the structure of the color brand list.
-├── palette.hexpat # Describes the structure of colour palettes used by PM (.Master or .User).
-└── xsd.hexpat # Describes the structure of XSD patterns.
-```
+> [!IMPORTANT]
+> Some of the resources are specified using [ImHex's pattern syntax](https://docs.werwolv.net/pattern-language).
+> To use the `.hexpat` patterns, configure the [ImHex](https://github.com/WerWolv/ImHex).
+>
+> First, open ImHex settings (_Extras_ -> _Settings_, or use `Ctrl+,` shortcuts) and go to the _Folders_ tab.
+> Then, click the _Add new folder_ button and select the `imhex/` folder.
+> This will allow ImHex to import our custom utilities and use them in hex patterns.
+>
+> Now, you can open a file you want to view in ImHex.
+> To import a hex pattern, open pattern browser (_File_ -> _Import_ -> _Pattern File_) and select the desired hex pattern file.

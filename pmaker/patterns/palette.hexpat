@@ -1,12 +1,11 @@
-#pragma magic [?? ?? ?? ??] @ 0x00
 #pragma endian little
 #pragma description Pattern Maker Palette
 
 import hex.provider;
 import type.types.rust;
 
-import pmaker.cstr;
-import pmaker.color;
+import xsp.cstr;
+import xsp.color;
 
 usize COLOR_NUMBER_LENGTH = 10 + 1;
 usize COLOR_NAME_LENGTH = 40 + 1;
@@ -14,7 +13,7 @@ usize BLENDS_NUMBER = 4; // PM limits blends up to 4 colors. The minimum is 2 if
 
 struct Blend {
     u8 brand;
-    pmaker::SizedCStr<COLOR_NUMBER_LENGTH> number;
+    xsp::SizedCStr<COLOR_NUMBER_LENGTH> number;
 };
 
 struct Bead {
@@ -26,9 +25,9 @@ struct PaletteItem {
     padding[2];
 
     u8 brand;
-    pmaker::SizedCStr<COLOR_NUMBER_LENGTH> number;
-    pmaker::SizedCStr<COLOR_NAME_LENGTH> name;
-    pmaker::Color color;
+    xsp::SizedCStr<COLOR_NUMBER_LENGTH> number;
+    xsp::SizedCStr<COLOR_NAME_LENGTH> name;
+    xsp::Color color;
     bool is_not_available [[hidden]];
 
     u16 blends_count [[hidden]];

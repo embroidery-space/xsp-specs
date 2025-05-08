@@ -2,12 +2,12 @@
 
 import std.io;
 
-namespace auto pmaker {
+namespace auto xsp {
     struct Color {
         u8 r;
         u8 g;
         u8 b;
-    } [[sealed, format("pmaker::format::color"), color(std::format("{:02X}{:02X}{:02X}", r, g, b))]];
+    } [[sealed, format("xsp::format::color"), color(std::format("{:02X}{:02X}{:02X}", r, g, b))]];
 
     namespace format {
         fn color(ref Color color) {
