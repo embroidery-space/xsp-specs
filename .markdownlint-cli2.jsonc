@@ -1,0 +1,11 @@
+{
+  "$schema": "https://raw.githubusercontent.com/DavidAnson/markdownlint-cli2/refs/tags/v0.17.2/schema/markdownlint-cli2-config-schema.json",
+  "config": {
+    "line-length": false,
+    "no-inline-html": {
+      "allowed_elements": ["figure", "figcaption", "img"],
+    },
+  },
+  "customRules": ["sentences-per-line"],
+  "gitignore": true,
+}
