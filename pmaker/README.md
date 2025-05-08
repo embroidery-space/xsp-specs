@@ -1,15 +1,5 @@
 # Pattern Maker Resources
 
-> [!IMPORTANT]
-> To use the `.hexpat` pattern, configure the [ImHex](https://github.com/WerWolv/ImHex).
->
-> First, open ImHex settings (_Extras_ -> _Settings_, or use `Ctrl+,` shortcuts) and go to the _Folders_ tab.
-> Then, click the _Add new folder_ button and select the `pmaker/includes/` folder.
-> This will allow ImHex to connect our custom resources and use them in hex patterns.
->
-> Now, you can open a file you want to view in ImHex.
-> To import a hex pattern, open pattern browser (_File_ -> _Import_ -> _Pattern File_) and select the desired hex pattern file.
-
 ## XSD
 
 XSD is a proprietary cross-stitch file format used by the _[Pattern Maker for Cross Stitch](https://web.archive.org/web/20191127080612/http://hobbyware.com)_.
