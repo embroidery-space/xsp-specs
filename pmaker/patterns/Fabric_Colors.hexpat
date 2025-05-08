@@ -3,15 +3,15 @@
 
 import type.types.rust;
 
-import pmaker.cstr;
-import pmaker.color;
+import xsp.cstr;
+import xsp.color;
 
 usize FABRIC_COLOR_NAME_LENGTH = 20 + 1;
 
 struct FabricColor {
     padding[4];
-    pmaker::SizedCStr<FABRIC_COLOR_NAME_LENGTH> color_name;
-    pmaker::Color color;
+    xsp::SizedCStr<FABRIC_COLOR_NAME_LENGTH> color_name;
+    xsp::Color color;
 };
 
 u16 count @ 0x04 [[hidden]];
