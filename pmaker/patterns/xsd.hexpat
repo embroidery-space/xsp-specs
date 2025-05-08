@@ -6,8 +6,8 @@ import std.io;
 import std.string;
 import type.types.rust;
 
-import pmaker.cstr;
-import pmaker.color;
+import xsp.cstr;
+import xsp.color;
 
 usize COLOR_NUMBER_LENGTH = 10 + 1;
 usize COLOR_NAME_LENGTH = 40 + 1;
@@ -71,7 +71,7 @@ struct PatternProperties {
 
 struct Blend {
     u8 brand;
-    pmaker::SizedCStr<COLOR_NUMBER_LENGTH> number;
+    xsp::SizedCStr<COLOR_NUMBER_LENGTH> number;
 };
 
 struct Bead {
@@ -83,9 +83,9 @@ struct PaletteItem {
     padding[2];
 
     u8 brand;
-    pmaker::SizedCStr<COLOR_NUMBER_LENGTH> number;
-    pmaker::SizedCStr<COLOR_NAME_LENGTH> name;
-    pmaker::Color color;
+    xsp::SizedCStr<COLOR_NUMBER_LENGTH> number;
+    xsp::SizedCStr<COLOR_NAME_LENGTH> name;
+    xsp::Color color;
     bool is_not_available [[hidden]];
 
     u16 blends_count [[hidden]];
@@ -105,7 +105,7 @@ struct PaletteItem {
 
 struct Note {
     u16 length [[hidden]];
-    pmaker::SizedCStr<length> data;
+    xsp::SizedCStr<length> data;
 } [[sealed, format("format_note")]];
 
 fn format_note(ref Note note) {
@@ -149,26 +149,26 @@ struct Palette {
 
 struct SymbolFormat {
     u16 use_alt_bg_color [[format("format_boolean")]];
-    pmaker::Color bg_color; padding[1];
-    pmaker::Color fg_color; padding[1];
+    xsp::Color bg_color; padding[1];
+    xsp::Color fg_color; padding[1];
 };
 
 struct LineFormat {
     u16 use_alt_color [[format("format_boolean")]];
-    pmaker::Color color; padding[1];
+    xsp::Color color; padding[1];
     u16 style;
     u16 thickness [[format("format_points")]];
 };
 
 struct NodeFormat {
     u16 use_dot_style [[format("format_boolean")]];
-    pmaker::Color color; padding[1];
+    xsp::Color color; padding[1];
     u16 use_alt_color [[format("format_boolean")]];
     u16 diameter [[format("format_points")]];
 };
 
 struct FontFormat {
-    pmaker::SizedCStr<FONT_NAME_LENGTH> font_name;
+    xsp::SizedCStr<FONT_NAME_LENGTH> font_name;
     padding[2];
     u16 font_weight;
     bool italic;
@@ -229,11 +229,11 @@ fn format_page_margin(u16 margin) {
 };
 
 struct PatternSettings {
-    pmaker::SizedCStr<FONT_NAME_LENGTH> default_stitch_font;
+    xsp::SizedCStr<FONT_NAME_LENGTH> default_stitch_font;
     padding[20];
 
     // Applies to `xsd::PatternInfo.notes`.
-    pmaker::SizedCStr<FONT_NAME_LENGTH> text_font;
+    xsp::SizedCStr<FONT_NAME_LENGTH> text_font;
     u16 font_size;
     u16 font_weight;
     u16 italic [[format("format_boolean")]];
@@ -262,8 +262,8 @@ struct PatternSettings {
     // &l - left alignment
     // &c - center alignment
     // &r - right alignment
-    pmaker::SizedCStr<PAGE_HEADER_AND_FOOTER_LENGTH> page_header;
-    pmaker::SizedCStr<PAGE_HEADER_AND_FOOTER_LENGTH> page_footer;
+    xsp::SizedCStr<PAGE_HEADER_AND_FOOTER_LENGTH> page_header;
+    xsp::SizedCStr<PAGE_HEADER_AND_FOOTER_LENGTH> page_footer;
 
     PageMargins page_margins;
 
@@ -276,7 +276,7 @@ struct PatternSettings {
 
 struct GridLine {
     u16 thickness [[format("format_grid_line_thickhness")]]; padding[2];
-    pmaker::Color color; padding[3];
+    xsp::Color color; padding[3];
 };
 
 fn format_grid_line_thickhness(u16 thickness) {
@@ -298,18 +298,18 @@ struct Grid {
 };
 
 struct Fabric {
-    pmaker::SizedCStr<FABRIC_COLOR_NAME_LENGTH> color_name;
-    pmaker::Color color;
+    xsp::SizedCStr<FABRIC_COLOR_NAME_LENGTH> color_name;
+    xsp::Color color;
 };
 
 struct PatternInfo {
-    pmaker::SizedCStr<PATTERN_NAME_LENGTH> name;
-    pmaker::SizedCStr<AUTHOR_NAME_LENGTH> author;
-    pmaker::SizedCStr<COMPANY_NAME_LENGTH> company;
-    pmaker::SizedCStr<COPYRIGHT_LENGTH> copyright;
-    pmaker::SizedCStr<PATTERN_NOTES_LENGTH> notes;
+    xsp::SizedCStr<PATTERN_NAME_LENGTH> name;
+    xsp::SizedCStr<AUTHOR_NAME_LENGTH> author;
+    xsp::SizedCStr<COMPANY_NAME_LENGTH> company;
+    xsp::SizedCStr<COPYRIGHT_LENGTH> copyright;
+    xsp::SizedCStr<PATTERN_NOTES_LENGTH> notes;
     u16 additional_fabric_counts[3];
-    pmaker::SizedCStr<FABRIC_KIND_NAME_LENGTH> fabric_kind;
+    xsp::SizedCStr<FABRIC_KIND_NAME_LENGTH> fabric_kind;
 };
 
 struct PageSetup {
@@ -376,7 +376,7 @@ struct DisplayThickness {
 struct StitchOutline {
     u16 use_specified_color [[format("format_boolean")]];
     u16 color_percentage [[format("format_percentage")]];
-    pmaker::Color specified_color; padding[1];
+    xsp::Color specified_color; padding[1];
     u16 thickness [[format("format_points")]];
 };
 
@@ -421,7 +421,7 @@ struct CellBoundaries {
 };
 
 struct Cell {
-    pmaker::SizedCStr<CELL_NAME_LENGTH> name;
+    xsp::SizedCStr<CELL_NAME_LENGTH> name;
     CellBoundaries boundaries;
 };
 
@@ -432,7 +432,7 @@ struct LibraryFontOptions {
 };
 
 struct CellKeyword {
-    pmaker::SizedCStr<CELL_KEYWORD_LENGTH> keyword;
+    xsp::SizedCStr<CELL_KEYWORD_LENGTH> keyword;
 } [[inline]];
 
 struct CellKeywords {
@@ -450,7 +450,7 @@ struct Library {
 
 struct HoopColor {
     u8 brand;
-    pmaker::SizedCStr<COLOR_NUMBER_LENGTH> number;
+    xsp::SizedCStr<COLOR_NUMBER_LENGTH> number;
 };
 
 struct MachineExport {
@@ -473,7 +473,7 @@ struct MachineExport {
 
     u16 hoop_width [[format("format_hoop_size")]];
     u16 hoop_height [[format("format_hoop_size")]];
-    pmaker::SizedCStr<HOOP_SIZE_TEXT_LENGTH> hoop_size_text;
+    xsp::SizedCStr<HOOP_SIZE_TEXT_LENGTH> hoop_size_text;
 
     // 0 - strands 1
     // 1 - strands 2
@@ -484,7 +484,7 @@ struct MachineExport {
 
     bool show_hoop_boundrary;
 
-    pmaker::SizedCStr<FILE_PATH_LENGTH> file_path;
+    xsp::SizedCStr<FILE_PATH_LENGTH> file_path;
 
     u8 amount_of_hoop_to_leave [[format("format_percentage")]];
     bool provide_alignment_stitches;
