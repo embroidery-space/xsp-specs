@@ -350,11 +350,11 @@ Attributes:
   </figcaption>
 </figure>
 
-1. Half/Gobelin stitches:
+1. Group 1 - Half/Gobelin stitches:
    - The top one is with `direction=3` (forward).
    - The bottom one is with `direction=4` (backward).
 
-2. Three-quarter stitches:
+2. Group 2 - Three-quarter stitches:
    - The top-left one is with `direction=2`, `palindex1` set and `palindex2` not set.
    - The top-right one is with `direction=1`, `palindex1` not set and `palindex2` set.
    - The bottom-left one is with `direction=1`, `palindex1` set and `palindex2` not set.
