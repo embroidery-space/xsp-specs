@@ -5,8 +5,8 @@
     "lint": "markdownlint-cli2 ./**/*.md"
   },
   "devDependencies": {
-    "markdownlint-cli2": "^0.17.2",
-    "prettier": "^3.5.3",
+    "markdownlint-cli2": "^0.18.1",
+    "prettier": "^3.6.2",
     "sentences-per-line": "^0.3.0"
   }
 }
