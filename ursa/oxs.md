@@ -18,6 +18,15 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 ### Specification Conventions
 
 1. All element and property names SHOULD be in [snake case](https://en.wikipedia.org/wiki/Snake_case).
+2. All application-specific elements and attributes MUST be marked with _`by <Application>`_.
+   By _application specificity_ we mean those elements and attributes that were first introduced by a specific application and currently are not supported widely, or are unique for a specific application and are not supposed to be used in other applications.
+   By the time, those elements and attributes may become general ones.
+
+   Here is a list of applications which specific elements and attributes are specified in this specification:
+   - [Embroiderly](https://github.com/embroidery-space/embroiderly).
+   - [MiniStitch (UrsaSoftware)](https://ursasoftware.com/ministitch).
+   - [Win/MacStitch (UrsaSoftware)](https://ursasoftware.com/macstitch).
+   - [XSPro Platinum (DP Software)](https://dpsoftware.com/xspro/index.htm).
 
 ### Common Data Types
 
@@ -179,15 +188,15 @@ Material-specific attributes (threads, beads, etc.):
   If specified, it SHOULD be in the range of 1 to 6.
 - `symbol`: integer or string - Specifies the symbol used to graphically represent the color.
   It can be a number representing a UTF-8 [code point](https://developer.mozilla.org/en-US/docs/Glossary/Code_point) or a string representing the actual character.
-- `symbol_courier` _by MiniStitch (UrsaSoftware_): string - Specifies the actual symbol character (for example, `A`).
-- `symbolcolor` _by XSPro Platinum (DP Software)_: rgb - Specifies the font color of the symbol.
+- `symbol_courier` _by MiniStitch_: string - Specifies the actual symbol character (for example, `A`).
+- `symbolcolor` _by XSPro Platinum_: rgb - Specifies the font color of the symbol.
 - `bsstrands`: integer - The number of threads for stitching back stitches and other "line" stitches.
   If specified, it SHOULD be in the range of 1 to 6.
 - `bscolor`: rgb - Specifies the color of a back stitch.
-- `fontname` _by XSPro Platinum (DP Software)_: string - Specifies the font family (for example, `Cross Stitch Pro Platinum`) used to draw symbols of this color.
-- `metalic` _by XSPro Platinum (DP Software)_: boolean - Specifies whether the color represents a metalic thread.
-- `fluorescent` _by XSPro Platinum (DP Software)_: boolean - Specifies whether the color represents a fluorescent thread.
-- `colorcmyk`, `bscolorcmyk`, `printcolorcmyk` _by XSPro Platinum (DP Software)_: cmyk - Specifies the color of the corresponding attribute in the CMYK color model.
+- `fontname` _by XSPro Platinum_: string - Specifies the font family (for example, `Cross Stitch Pro Platinum`) used to draw symbols of this color.
+- `metalic` _by XSPro Platinum_: boolean - Specifies whether the color represents a metalic thread.
+- `fluorescent` _by XSPro Platinum_: boolean - Specifies whether the color represents a fluorescent thread.
+- `colorcmyk`, `bscolorcmyk`, `printcolorcmyk` _by XSPro Platinum_: cmyk - Specifies the color of the corresponding attribute in the CMYK color model.
   These are important for publishers who will likely print their patterns on paper and want to achieve high repeatability thread color reproduction.
 
 All of these attributes except `color` are OPTIONAL.
@@ -401,7 +410,7 @@ Attributes:
       </figcaption>
     </figure>
 
-  - `daisy` _by Ursa Software_ - A simple, single-loop embroidery stitch, usually joined together into a chain.
+  - `daisy` _by Win/MacStitch_ - A simple, single-loop embroidery stitch, usually joined together into a chain.
     Thus, also known as a chain stitch.
 
     <figure>
@@ -418,7 +427,7 @@ Attributes:
       </figcaption>
     </figure>
 
-  - `bugle` _by Ursa Software_ - A stitch with a bugle bead.
+  - `bugle` _by Win/MacStitch_ - A stitch with a bugle bead.
 
     <figure>
       <img src="../images/ursa/oxs/backstitches-bugle.png" alt="Bugle beads in WinStitch."/>
@@ -496,12 +505,12 @@ Attributes:
     Ursa renders quarter stitches as petits (1/4 of a full stitch).
 
     Additional attributes:
-    - `petit` _by XSPro Platinum (DP Software)_: boolean - Specifies whether the stitch is actually a **quarter** stitch (1/2 of a half stitch) or a **petit** stitch (1/4 of a full stitch).
+    - `petit` _by XSPro Platinum_: boolean - Specifies whether the stitch is actually a **quarter** stitch (1/2 of a half stitch) or a **petit** stitch (1/4 of a full stitch).
 
       If not specified or `true`, we consider this stitch to be a **petit** stitch.
       Otherwise, we consider this stitch to be a **quarter** stitch.
 
-  - `tent` _by XSPro Platinum (DP Software)_ - A half stitch.
+  - `tent` _by XSPro Platinum_ - A half stitch.
     It MAY represent the type of stitches as the `partstitch` elements with the `direction` set to `3` or `4`.
 
     Additional attributes:
@@ -511,7 +520,7 @@ Attributes:
       - `1` - backward.
       - `2` - forward.
 
-  - `horizontalhalf`, `verticalhalf` _by UrsaSoftware_ - A stitch with half size of a full stitch.
+  - `horizontalhalf`, `verticalhalf` _by Win/MacStitch_ - A stitch with half size of a full stitch.
 
     <figure>
       <img src="../images/ursa/oxs/hv-halfstitches.png" alt="Horizontal and vertical half stitches in WinStitch."/>
@@ -520,7 +529,7 @@ Attributes:
       </figcaption>
     </figure>
 
-  - `fullcross` _by UrsaSoftware_ - A normal cross stitch which, unlike a `fullstitch`, can be placed anywhere on the cloth/fabric.
+  - `fullcross` _by Win/MacStitch_ - A normal cross stitch which, unlike a `fullstitch`, can be placed anywhere on the cloth/fabric.
 
     <figure>
       <img src="../images/ursa/oxs/fullcrosses.png" alt="Full croses in WinStitch."/>
@@ -529,7 +538,7 @@ Attributes:
       </figcaption>
     </figure>
 
-  - `3x2`, `2x3`, `3x3`, `4x4`, `4x2`, `6x2`, `8x2`, `10x2`, `12x2`, `16x2` _by UrsaSoftware_ - Normal stitches that are larger than usual.
+  - `3x2`, `2x3`, `3x3`, `4x4`, `4x2`, `6x2`, `8x2`, `10x2`, `12x2`, `16x2` _by Win/MacStitch_ - Normal stitches that are larger than usual.
 
     They are typically used for knitting.
 
@@ -540,7 +549,7 @@ Attributes:
       </figcaption>
     </figure>
 
-  - `topleftlongtriangle` `botrightlongtriangle` `toprightlongtriangle` `botleftlongtriangle` `topleftwidetriangle` `botrightwidetriangle` `botleftwidetriangle` `toprightwidetriangle` _by UrsaSoftware_ - Triangle stitches.
+  - `topleftlongtriangle` `botrightlongtriangle` `toprightlongtriangle` `botleftlongtriangle` `topleftwidetriangle` `botrightwidetriangle` `botleftwidetriangle` `toprightwidetriangle` _by Win/MacStitch_ - Triangle stitches.
 
     <figure>
       <img src="../images/ursa/oxs/triangle-stitches.png" alt="Triangle stitches in WinStitch."/>
@@ -562,7 +571,7 @@ Attributes:
 
     In WinStitch, it is 2 mm in size.
 
-  - `bead1mm`, `bead2.5mm`, `bead3mm`, `bead5mm`, `bead6mm`, `bead8mm`, `bead12mm` _by UrsaSoftware_ - Beads with the size specified.
+  - `bead1mm`, `bead2.5mm`, `bead3mm`, `bead5mm`, `bead6mm`, `bead8mm`, `bead12mm` _by Win/MacStitch_ - Beads with the size specified.
 
     <figure>
       <img src="../images/ursa/oxs/beads.png" alt="Beads in WinStitch."/>
