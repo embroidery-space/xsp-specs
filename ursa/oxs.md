@@ -574,6 +574,8 @@ Attributes:
   - `specialstitch` _by Embroiderly_ - A special stitch from the XSD pattern.
 
     Additional attributes:
+    - `width`: number - Duplicates the corresponding attribute from the targeted special stitch model.
+    - `height`: number - Duplicates the corresponding attribute from the targeted special stitch model.
     - `modindex`: integer - Specifies the index of the special stitch model defined in the `special_stitch_models` section.
       If it is missing or empty, we consider this special stitch to be invalid.
     - `rotation`: integer - Specifies the angle of rotation of the stitch in degrees.
@@ -652,8 +654,8 @@ Defines special stitch model information.
 - `index`: integer.
 - `unique_name`: string.
 - `name`: string.
-- `width`: number.
-- `height`: number.
+- `width`: number - Specifies the width of the stitch in stitches.
+- `height`: number - Specifies the height of the stitch in stitches.
 
 The `model` element contains `backstitch` (with object types `backstitch`, `straightstitch`, `curvedstitch`) and `object` elements (with object type `knot`).
 
