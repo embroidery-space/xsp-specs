@@ -23,11 +23,9 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 - `string` - Represents a sequence of characters encoded in UTF-8.
 - `integer` - Represents a whole number without a fractional component in base 10.
-
   - Currently, only unsigned integers are expected to be used.
 
 - `number` - Represents a numeric value that can be either an integer or a floating-point number.
-
   - Currently, only unsigned number are expected to be used.
 
   - Stringified floating-point numbers can contain a decimal separator (period, `.`).
@@ -39,21 +37,18 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
   - The exponential notation is not expected to be used, but it should be supported.
 
 - `rgb` - Represents a hexadecimal representation of an [RGB color](https://en.wikipedia.org/wiki/RGB_color_model).
-
   - The color value is specified as a six-character string (`RRGGBB`) without a leading `#`.
     Each component (`RR`, `GG`, `BB`) is a two-digit hexadecimal number (`00` to `FF`) representing the red, green, and blue color channels, respectively.
 
   - In addition to specific color values, the special value `nil` is allowed, indicating the absence of a color.
 
 - `cmyk` - Represents a hexadecimal representation of a [CMYK color](https://en.wikipedia.org/wiki/CMYK_color_model).
-
   - The color value is specified as an eight-character string (`CCMMYYKK`) without a leading `#`.
     Each component (`CC`, `MM`, `YY`, `KK`) is a two-digit hexadecimal number (`00` to `FF`) representing the cyan, magenta, yellow, and key (mostly, black) color channels, respectively.
 
   - In addition to specific color values, the special value `nil` is allowed, indicating the absence of a color.
 
 - `boolean` - Represents a logical value and can have one of two states: `true` or `false`.
-
   - State MUST be a lowercase string.
 
   - However, there are some software that use uppercase strings.
@@ -334,7 +329,6 @@ Attributes:
 - `direction`: integer - Specifies the direction of the part stitch.
 
   The possible values are:
-
   - `1` and `2` for three-quarter stitches.
   - `3` and `4` for half/gobelin stitches.
 
@@ -348,12 +342,10 @@ Attributes:
 </figure>
 
 1. Half/Gobelin stitches:
-
    - The top one is with `direction=3` (forward).
    - The bottom one is with `direction=4` (backward).
 
 2. Three-quarter stitches:
-
    - The top-left one is with `direction=2`, `palindex1` set and `palindex2` not set.
    - The top-right one is with `direction=1`, `palindex1` not set and `palindex2` set.
    - The bottom-left one is with `direction=1`, `palindex1` set and `palindex2` not set.
@@ -400,7 +392,6 @@ Attributes:
 - `objecttype`: string - Specifies the type of a back stitch.
 
   The known values are:
-
   - `backstitch` - A regular back stitch.
 
     <figure>
@@ -500,13 +491,11 @@ Attributes:
 - `objecttype`: string - Specifies the type of an object.
 
   The known values are:
-
   - `quarter` - A small stitch.
 
     Ursa renders quarter stitches as petits (1/4 of a full stitch).
 
     Additional attributes:
-
     - `petit` _by XSPro Platinum (DP Software)_: boolean - Specifies whether the stitch is actually a **quarter** stitch (1/2 of a half stitch) or a **petit** stitch (1/4 of a full stitch).
 
       If not specified or `true`, we consider this stitch to be a **petit** stitch.
@@ -516,11 +505,9 @@ Attributes:
     It MAY represent the type of stitches as the `partstitch` elements with the `direction` set to `3` or `4`.
 
     Additional attributes:
-
     - `direction`: integer - Specifies the direction of the part stitch.
 
       The possible values are:
-
       - `1` - backward.
       - `2` - forward.
 
@@ -587,7 +574,6 @@ Attributes:
   - `specialstitch` _by Embroiderly_ - A special stitch from the XSD pattern.
 
     Additional attributes:
-
     - `modindex`: integer - Specifies the index of the special stitch model defined in the `special_stitch_models` section.
       If it is missing or empty, we consider this special stitch to be invalid.
     - `rotation`: integer - Specifies the angle of rotation of the stitch in degrees.
