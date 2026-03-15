@@ -1,12 +1,18 @@
 {
   "private": true,
   "scripts": {
-    "fmt": "prettier --check ./**/*.md",
-    "lint": "markdownlint-cli2 ./**/*.md"
+    "fmt": "oxfmt --check",
+    "fmt:fix": "oxfmt --write",
+    "lint": "markdownlint-cli2",
+    "lint:fix": "markdownlint-cli2 --fix"
   },
   "devDependencies": {
-    "markdownlint-cli2": "^0.18.1",
-    "prettier": "^3.6.2",
-    "sentences-per-line": "^0.3.0"
-  }
+    "markdownlint-cli2": "0.18.1",
+    "markdownlint-sentences-per-line": "0.1.3",
+    "oxfmt": "0.40.0"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "packageManager": "pnpm@10.32.1"
 }
