@@ -7,9 +7,9 @@
     "lint:fix": "markdownlint-cli2 --fix"
   },
   "devDependencies": {
-    "markdownlint-cli2": "0.21.0",
+    "markdownlint-cli2": "0.22.0",
     "markdownlint-sentences-per-line": "0.1.3",
-    "oxfmt": "0.41.0"
+    "oxfmt": "0.42.0"
   },
   "engines": {
     "node": ">=24"
