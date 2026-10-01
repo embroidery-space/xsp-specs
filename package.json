@@ -9,7 +9,7 @@
   "devDependencies": {
     "markdownlint-cli2": "0.23.3",
     "markdownlint-sentences-per-line": "0.1.7",
-    "oxfmt": "0.70.0"
+    "oxfmt": "0.71.0"
   },
   "engines": {
     "node": ">=24"
