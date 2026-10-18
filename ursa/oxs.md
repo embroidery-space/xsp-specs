@@ -448,12 +448,6 @@ Attributes:
     In Embroiderly, back stitches can be only one cell long.
     Straight stitches, in contrast, can be any length.
 
-  - `curvedstitch` _by Embroiderly_ - A curved stitch.
-
-    In Embroiderly, curved stitches are part of special stitch models.
-
-    Curved stitches have an unspecified number of `x` and `y` coordinates.
-
   The software that does not actually support `daisy`, `bugle` or `straightstitch` objects MAY process them as `backstitch`.
 
 - `sequence`: integer - Specifies the order in which the elements are rendered.
@@ -469,16 +463,6 @@ Example:
   <backstitch x1="2" x2="5" y1="2" y2="2.5" palindex="3" objecttype="backstitch" sequence="0"/>
   <backstitch x1="3" x2="4" y1="3" y2="2" palindex="1" objecttype="daisy" sequence="0"/>
   <backstitch x1="6" x2="6" y1="2" y2="5" palindex="1" objecttype="bugle" sequence="0"/>
-  <backstitch
-    x1="1.00" y1="0.00"
-    x2="0.43" y2="0.26"
-    x3="0.06" y3="0.66"
-    x4="0.06" y4="1.03"
-    x5="0.50" y5="1.06"
-    x6="0.89" y6="0.66"
-    x7="1.10" y7="0.10"
-    palindex="1" objecttype="curvedstitch"
-  />
 </backstitches>
 ```
 
@@ -580,16 +564,6 @@ Attributes:
       </figcaption>
     </figure>
 
-  - `specialstitch` _by Embroiderly_ - A special stitch from the XSD pattern.
-
-    Additional attributes:
-    - `width`: number - Duplicates the corresponding attribute from the targeted special stitch model.
-    - `height`: number - Duplicates the corresponding attribute from the targeted special stitch model.
-    - `modindex`: integer - Specifies the index of the special stitch model defined in the `special_stitch_models` section.
-      If it is missing or empty, we consider this special stitch to be invalid.
-    - `rotation`: integer - Specifies the angle of rotation of the stitch in degrees.
-    - `flip_x`, `flip_y`: boolean - Specifies whether the stitch should be flipped along the corresponding axis.
-
 - `marked`: boolean.
 
 Example:
@@ -644,63 +618,5 @@ Example:
   <object x1="1.5" y1="1.5" palindex="1" objecttype="bead1mm" />
   <object x1="3.5" y1="1.5" palindex="1" objecttype="bead" />
   <object x1="5.5" y1="1.5" palindex="1" objecttype="bead2.5mm" />
-
-  <!-- A special stitch. -->
-  <object x1="10" y1="5.5" palindex="3" modindex="0" rotation="90" flip_x="true" flip_y="false" objecttype="specialstitch"/>
 </ornaments_inc_knots_and_beads>
-```
-
-### `special_stitch_models` _by Embroiderly_
-
-Holds `model` elements.
-
-If the `special_stitch_models` tag is missing or empty, this means that the pattern does not contain special stitch models.
-
-#### `model`
-
-Defines special stitch model information.
-
-- `index`: integer.
-- `unique_name`: string.
-- `name`: string.
-- `width`: number - Specifies the width of the stitch in stitches.
-- `height`: number - Specifies the height of the stitch in stitches.
-
-The `model` element contains `backstitch` (with object types `backstitch`, `straightstitch`, `curvedstitch`) and `object` elements (with object type `knot`).
-
-The `palindex` attribute of the model elements is always `0`.
-Thus, the model elements do not actually have a color.
-Instead, when we render a special stitch that has this model, we use the color of that stitch for all model elements.
-
-Example:
-
-```xml
-<special_stitch_models>
-  <model index="0" unique_name="Rhodes Heart - over 6" name="Rhodes Heart" width="3.0" height="2.5">
-    <backstitch x1="1.0" x2="2.0" y1="2.0" y2="0.0" palindex="0" objecttype="straightstitch"/>
-    <backstitch x1="0.5" x2="2.5" y1="1.5" y2="0.0" palindex="0" objecttype="straightstitch"/>
-    <backstitch x1="0.0" x2="3.0" y1="1.0" y2="0.5" palindex="0" objecttype="straightstitch"/>
-    <backstitch x1="0.0" x2="3.0" y1="0.5" y2="1.0" palindex="0" objecttype="straightstitch"/>
-    <backstitch x1="0.5" x2="2.5" y1="0.0" y2="1.5" palindex="0" objecttype="straightstitch"/>
-    <backstitch x1="1.0" x2="2.0" y1="0.0" y2="2.0" palindex="0" objecttype="straightstitch"/>
-    <backstitch x1="1.5" x2="1.5" y1="0.5" y2="2.5" palindex="0" objecttype="straightstitch"/>
-  </model>
-  <model index="1" unique_name="Lazy Daisy" name="Lazy Daisy" width="1.0" height="1.5">
-    <backstitch
-      x1="1.00" y1="0.00"
-      x2="0.43" y2="0.26"
-      x3="0.06" y3="0.66"
-      x4="0.06" y4="1.03"
-      x5="0.50" y5="1.06"
-      x6="0.89" y6="0.66"
-      x7="1.10" y7="0.10"
-      palindex="0" objecttype="curvedstitch"
-    />
-    <backstitch
-      x1="0.03" y1="1.13"
-      x2="0.23" y2="0.93"
-      palindex="0" objecttype="curvedstitch"
-    />
-  </model>
-</special_stitch_models>
 ```
